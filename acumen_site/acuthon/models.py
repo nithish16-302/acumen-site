@@ -2,26 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
-
-#participant-model
-class Participant(models.Model):
-    #name, college, year, branch, email, contactno
-    I = 'I'
-    II = 'II'
-    III = 'III'
-    IV = 'IV'
-    
-    YEAR_CHOICES=((I,'I'),(II,'II'),(III,'III'),(IV,'IV'))
-
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    college = models.CharField(max_length=128)
-    year = models.CharField(max_length = 3, choices = YEAR_CHOICES, default = "I")
-    branch = models.CharField(max_length=128)
-    contact = models.CharField(max_length=15)
-    payment_id = models.CharField(max_length=256)
-    paid = models.BooleanField(default=False)
-    
-
 #team-model
 class Team(models.Model):
     NGO_APPLICATIONS = 'NGO APPLICATIONS'
@@ -40,7 +20,30 @@ class Team(models.Model):
                         (IAPPS, 'INTELLIGENTS APPLICATIONS')
                     )
     
-    participants = models.CharField(max_length=64)
     name = models.CharField(max_length=128)
     project_link = models.CharField(max_length=1024)
     theme = models.CharField(max_length=64, choices=THEME_CHOICES)
+
+class Payment(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    payment_id = models.CharField(max_length=32)
+    payment_status = models.CharField(max_length=30)
+    payment_request_id = models.CharField(max_length=32)
+
+#participant-model
+class Participant(models.Model):
+    #name, college, year, branch, email, contactno
+    I = 'I'
+    II = 'II'
+    III = 'III'
+    IV = 'IV'
+    
+    YEAR_CHOICES=((I,'I'),(II,'II'),(III,'III'),(IV,'IV'))
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    college = models.CharField(max_length=128)
+    year = models.CharField(max_length = 3, choices = YEAR_CHOICES, default = "I",blank=True)
+    branch = models.CharField(max_length=128,blank=True)
+    contact = models.CharField(max_length=15)
+    payment_id = models.ForeignKey(Payment,on_delete=models.SET_NULL,null=True,blank=True)
+    team = models.ForeignKey(Team,on_delete=models.SET_NULL,null=True,blank=True)
