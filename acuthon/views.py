@@ -19,7 +19,7 @@ def acuthon(request):
 
 def logout_view(request):
     logout(request)
-    return HttpResponse("User logged out")
+    return redirect('acuthon:acuthon')
 
 def register(request):
     """

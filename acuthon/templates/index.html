@@ -133,9 +133,7 @@
       </div>
     </section>
 
-    <!-- General Rules Section -->
-    <section id="generalRules" class="darker-black content-section text-center ">
-      <!-- Modal -->
+    <!-- Modal -->
       <div class="modal fade" id="modal-reg" tabindex="-1" role="dialog" >
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -144,33 +142,37 @@
               <h4 class="modal-title" id="myModalLabel">Acuthon Registration</h4>
             </div>
             <div class="modal-body">
-              <form action="/acuthon/register" method="POST" id="form1">
+              <form role="form" action="/acuthon/register" method="POST" id="form1">
                 
                 {% csrf_token %}
                 <div class="form-group">
-                  <label for="first_name">Name : </label>
-                  <input id="first_name" name="first_name" type="text" placeholder="Enter Name" />
+                  <label class="control-label" for="first_name">Name : </label>
+                  <input class="form-control" id="first_name" name="first_name" type="text" placeholder="Enter Name" />
                 </div>
                 
                 <div class="form-group">
-                  <label for="email">Email ID : </label>
-                  <input name="email" type="email" placeholder="Enter Email"/>
+                  <label class="control-label" for="email">Email ID : </label>
+                  <input class="form-control" name="email" type="email" placeholder="Enter Email"/>
                 </div>
                 
                 <div class="form-group">
-                  <label for="password">Password : </label>
-                  <input name="password" type="password" placeholder="Enter Password"/>
+                  <label class="control-label" for="password">Password : </label>
+                  <input class="form-control" name="password" type="password" placeholder="Enter Password"/>
                 </div>
                 <div class="form-group">
-                    <label for="mobile_number">Phone Number : </label>
-                    <input name="mobile_number" type="tel" placeholder="Enter Mobile Number"/>
+                    <label class="control-label" for="mobile_number">Phone Number : </label>
+                    <input class="form-control" name="mobile_number" type="tel" placeholder="Enter Mobile Number"/>
                 </div>
                 <div class="form-group">
-                    <label for="college">College : </label>
-                    <input name="college" type="tel" placeholder="Enter College Name"/>
+                    <label class="control-label" for="college">College : </label>
+                    <input class="form-control" name="college" type="tel" placeholder="Enter College Name"/>
                 </div>
-                    <input class="btn btn-primary btn-large" form="form1" type="submit" value="Submit"/>
+                <span class="form-group">
+                    <input class="form-control btn btn-primary btn-large" form="form1" type="submit" value="Submit"/>                 
+                </span>
               </form>
+              <p style="font-size:15px; padding:2px; margin:5px;">Already registered? Try <a data-dismiss="modal" href="#modal-login" data-toggle="modal">Login</a> </p>
+                
             </div>
             <div class="modal-footer">
               </br>
@@ -190,17 +192,18 @@
                 {% csrf_token %}
 
                 <div class="form-group">
-                    <label for="email">Email ID : </label>
-                    <input name="email" type="email" placeholder="Enter Email"/>
+                    <label class="control-label" for="email">Email ID : </label>
+                    <input class="form-control" name="email" type="email" placeholder="Enter Email"/>
                   </div>
                   
                   <div class="form-group">
-                    <label for="password">Password : </label>
-                    <input name="password" type="password" placeholder="Enter Password"/>
+                    <label class="control-label" for="password">Password : </label>
+                    <input class="form-control" name="password" type="password" placeholder="Enter Password"/>
                   </div>
 
-                <input class="btn btn-primary" name="submit" type="submit" />
+                <input class="form-control" class="btn btn-primary" name="submit" type="submit" />
               </form>
+              <p style="font-size:15px; padding:2px; margin:5px;">Didn't register yet? Register yourself <a data-dismiss="modal" href="#modal-reg" data-toggle="modal">here</a> </p>
             </div>
             <div class="modal-footer">
               </br>
@@ -216,15 +219,45 @@
               <h4 class="modal-title" id="myModalLabel">Acuthon Teams</h4>
             </div>
             <div class="modal-body">
-              <form action="/acuthon/login" method="post">
+              <form action="/acuthon/team" method="post">
                 {% csrf_token %}
-                <input name="participant1" type="text" />
-                <input name="participant2" type="text" />
-                <input name="participant3" type="text" />
-                <input name="participant4" type="text" />
-                <input name="theme" type="dropdown" />
-                <input name="project_link" type="url" />
-                <input class="btn btn-primary" name="submit" type="submit" />
+
+                  <div class="form-group">
+                    <label class="control-label" for="email">Team Name : </label>
+                    <input class="form-control" name="email" type="email" placeholder="Enter Email"/>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label class="control-label" for="password">Theme : </label>
+                    <input class="form-control" name="password" type="password" placeholder="Enter Password"/>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="control-label" for="password">Project link : </label>
+                    <input class="form-control" name="password" type="password" placeholder="Enter Password"/>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="control-label" for="password">Particpant 1 : </label>
+                    <input class="form-control" name="password" type="password" placeholder="Enter Password"/>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="control-label" for="password">Particpant 2 : </label>
+                    <input class="form-control" name="password" type="password" placeholder="Enter Password"/>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="control-label" for="password">Particpant 3 : </label>
+                    <input class="form-control" name="password" type="password" placeholder="Enter Password"/>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="control-label" for="password">Particpant 4 : </label>
+                    <input class="form-control" name="password" type="password" placeholder="Enter Password"/>
+                  </div>
+
+                <input class="form-control" class="btn btn-primary" name="submit" type="submit" />
               </form>
             </div>
             <div class="modal-footer">
@@ -233,25 +266,37 @@
           </div>
         </div>
       </div>
+
+    <!-- General Rules Section -->
+    <section id="generalRules" class="darker-black content-section text-center ">
       <div class="download-section">
         <div class="container">
           <div class="col-lg-8 col-lg-offset-2">
             <h2>We will have rules and instructions shown up here</h2>
-            <span class="btn-group" role="group" aria-label="Basic example">
-              <a class="btn btn-primary" href="#modal-reg" data-toggle="modal">Register now</a>
-              <a class="btn btn-primary" href="#modal-login" data-toggle="modal">Login now</a>
-              <a class="btn btn-primary" href="#modal-login" data-toggle="modal">Create Team</a>
-              {%if request.user.is_authenticated%}
-                <a class="btn btn-primary" href="acuthon/pay">Pay</a>
-              {%endif%}
-            </span>
           </div>
           <div class="row">
             <div class="col-lg-6 half-div">
-              <h4>Your details</h4>
+              {%if request.user.is_authenticated%}
+                <h4>Your details</h4>
+                <span class="btn-group" role="group" aria-label="Basic example">
+                  <a class="btn btn-primary" href="/acuthon/logout">Login now</a>
+                  <a class="btn btn-primary" href="acuthon/pay">Pay</a>
+                </span>
+              {%else%}
+                <h4>Please login to view your details</h4>
+                <span class="btn-group" role="group" aria-label="Basic example">
+                  <a data-dismiss="modal" class="btn btn-primary" href="#modal-login" data-toggle="modal">Login now</a>
+                  <a data-dismiss="modal" class="btn btn-primary" href="#modal-reg" data-toggle="modal">Register now</a>
+                </span>                
+              {%endif%}
             </div>
             <div class="col-lg-6 half-div">
-              <h4>Team details</h4>
+              {%if request.user.is_authenticated%}
+                <h4>Your Team details</h4>
+              {%else%}
+                <h4>Please login to view your Team details</h4>
+                <a data-dismiss="modal" class="btn btn-primary" href="{% if request.user.is_authenticated %}#modal-team{% else %}#modal-login{% endif %}" data-toggle="modal">Create Team</a>
+              {%endif%}
             </div>
           </div>
         </div>

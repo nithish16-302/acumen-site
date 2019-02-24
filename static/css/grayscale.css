@@ -477,4 +477,9 @@ section {
   border-color: #0088ee;
   border-radius: 5px;
   margin-top: 5px;
+  padding: 2%;
+}
+
+.form-horizontal {
+  text-align: left;
 }
