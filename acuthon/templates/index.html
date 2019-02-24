@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="That's a landing page for our first MATRIX Labs Hackathon">
+    <meta name="description" content="That's a landing page for our first Acuthon">
     <meta name="author" content="Matrix Labs Brasil">
 
     <title>ACUMEN HACKATHON</title>
@@ -204,13 +204,22 @@
         <div class="container">
           <div class="col-lg-8 col-lg-offset-2">
             <h2>We will have rules and instructions shown up here</h2>
+            <span class="btn-group" role="group" aria-label="Basic example">
+              <a class="btn btn-primary" href="#modal-reg" data-toggle="modal">Register now</a>
+              <a class="btn btn-primary" href="#modal-login" data-toggle="modal">Login now</a>
+              <a class="btn btn-primary" href="#modal-login" data-toggle="modal">Create Team</a>
+            </span>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 half-div">
+              <h4>Your details</h4>
+            </div>
+            <div class="col-lg-6 half-div">
+              <h4>Team details</h4>
+            </div>
           </div>
         </div>
       </div>
-
-      <p><a class="btn btn-primary" href="#modal-reg" data-toggle="modal">Register now!</a></p>
-      <p><a class="btn btn-primary" href="#modal-login" data-toggle="modal">Login now</a></p>
-      <p><a class="btn btn-primary" href="#modal-login" data-toggle="modal">Create Team</a></p>
     </section>
 
     <!-- Schedule Section -->
@@ -224,14 +233,13 @@
               <div class="row">
                 <div class="when col-lg-4 col-md-4 col-sm-12 col-xs-12">09/03/2019 - 8:30am</div>
                 <div class="where col-lg-4 col-md-4 col-sm-12 col-xs-12">Hackathon-Inaugration</div>
-                <div class="what col-lg-4 col-md-4 col-sm-12 col-xs-12">Apresentação do Hackathon</div>
+                <div class="what col-lg-4 col-md-4 col-sm-12 col-xs-12">IT Lab V</div>
               </div>
             </div>
             <div class="agenda">
               <div class="row">
                 <div class="when col-lg-4 col-md-4 col-sm-12 col-xs-12">09/03/2019 - 9:00am</div>
                 <div class="where col-lg-4 col-md-4 col-sm-12 col-xs-12">Start Your Hack</div>
-                <div class="what col-lg-4 col-md-4 col-sm-12 col-xs-12">Início do Hackathon</div>
               </div>
             </div>
             <div class="agenda">
@@ -285,28 +293,58 @@
     <section id="projects" class="darker-black content-section">
       <div class="download-section">
         <div class="container">
-          <div class="col-lg-8 col-lg-offset-2">
+          <div class="col-lg-12">
             <h2 class="text-center">Themes</h2>
-            <p>
-              <strong>AR/VR/MR</strong> </br>
-              <strong>Description: </strong>Recognize user's mood, search for Spotify playlists to help his day. These playlists are found by user's interest, crossing information like geolocation and most played songs.
-            </p>
-            <p>
-              <strong>Edutainment</strong> </br>
-              Description: </strong>A device responsible by monitoring maternity environment. The main features are: Facial recognition for medical responsible team, verification for humidity and temperature to certify the ideal conditions for maternity.
-            </p>
-            <p>
-              <strong>Women Safety</strong></a> </br>
-            <strong>Description: </strong>The main purpose is control lockers that keeps pills and helps users not forget to take his medicines.
-            </p>
-            <p>
-              <strong>NGO application</strong> </br>
-              <strong> Description: </strong>Control Google Slide presentations with gestures.
-            </p>
-            <p>
-              <strong>E-Commerce</strong> </br>
-              <strong>Description: </strong>Automate an office, you will be able to control room temperature and light using the smartphone. Another great feature is the ability to unlock the office door using facial recognition.
-            </p>
+            <div class="section" style="width:100%">
+                <div id="member">
+                    <div id="mem-img">
+                        <img  src="{% static 'img/test.png' %}" >
+                    </div>
+                    <div id="details">
+                        <h3>XR - AR/VR/MR</h3>
+                    </div>
+                </div>
+                <div id="member">
+                    <div id="mem-img">
+                        <img  src="{% static 'img/test.png' %}" >
+                    </div>
+                    <div id="details">
+                        <h3>NGO Applications</h3>
+                    </div>
+                </div>
+                <div id="member">
+                    <div id="mem-img">
+                        <img  src="{% static 'img/test.png' %}" >
+                    </div>
+                    <div id="details">
+                        <h3>Intelligent Apps</h3>
+                    </div>
+                </div>
+                <div id="member">
+                    <div id="mem-img">
+                        <img  src="{% static 'img/test.png' %}" >
+                    </div>
+                    <div id="details">
+                        <h3>Edutainment</h3>
+                    </div>
+                </div>
+                <div id="member">
+                    <div id="mem-img">
+                        <img  src="{% static 'img/test.png' %}" >
+                    </div>
+                    <div id="details">
+                        <h3>Smart City</h3>
+                    </div>
+                </div>
+                <div id="member">
+                    <div id="mem-img">
+                        <img  src="{% static 'img/test.png' %}" >
+                    </div>
+                    <div id="details">
+                        <h3>Startup Ideas</h3>
+                    </div>
+                </div>
+            </div>
           </div>
         </div>
       </div>
@@ -332,10 +370,10 @@
       <div class="row" style="margin:5%"></div>
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
-          <h2>MATRIX Labs Brasil</h2>
+          <h2>Acuthon - Edition I</h2>
           <p>Feel free to get in touch with us.</p>
-          <p><a href="mailto:acumen.it.vce+support@gmail.com">Mail us at acumen.it.vce+support@gmail.com</a>
-          </p>
+          <p>Add contacts here</p>
+          <p>Mail us at <a href="mailto:acumen.it.vce+support@gmail.com">acumen.it.vce+support@gmail.com</a></p>
         </div>
       </div>
     </section>
@@ -360,6 +398,6 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCe7xQb1YWBLPDqFYAKE4G8_ysGyfuYyPg"></script-->
 
     <!-- Theme JavaScript -->
-    <script src="{% static 'js/grayscale.min.js' %}"></script>
+    <script src="{% static 'js/grayscale.js' %}"></script>
   </body>
 </html>

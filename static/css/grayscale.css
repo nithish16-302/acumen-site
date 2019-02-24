@@ -104,10 +104,6 @@ a:focus {
 .navbar-custom .nav li.active a:hover {
   color: white;
 }
-section{
-  height: 100%;
-}
-
 @media (min-width: 768px) {
   .navbar-custom {
     padding: 20px 0;
@@ -255,11 +251,8 @@ section{
 }
 #map {
   width: 100%;
-  height: 500px;
-  position: relative;; /*it can be fixed too*/
-  left:0; right:0;
-  top:0; bottom:0;
-  margin:auto;
+  height: 200px;
+  margin-top: -20px;
 }
 @media (min-width: 767px) {
   .content-section {
@@ -419,4 +412,69 @@ body {
     padding-left: 15px;
     text-align: center;
   }
+}
+
+.section {
+  padding: 0;
+  display: grid;
+  grid-template-columns:auto auto auto;
+  grid-template-rows:auto auto auto;
+  grid-auto-columns: 25vw;
+  grid-auto-rows: 40vh;
+  grid-gap: 10px;
+}
+
+#member {
+  height: auto;
+  width: 20vw;
+}
+
+#member:hover p, #member:hover h2, #member:hover ,#member:active p, #member:active h2, #member:hover img, #member:active{
+  border-color: antiquewhite;
+  filter: grayscale(0%);
+}
+#details {
+  color: white;
+  position: relative;
+  top: 0;
+  text-align: center;
+}
+#mem-img {
+  padding: 0em;
+  width: 20vw;
+}
+#mem-img > img {
+  width: 20vw;
+  filter: grayscale(100%);
+}
+@media screen and (max-width:40em)
+{
+  .section {
+      grid-template-columns: auto auto;
+      grid-template-rows:auto auto auto;
+      grid-auto-columns: 25vw;
+      grid-auto-rows: 40vh;
+      grid-gap: 10px;
+  }
+  #head {
+      font-size: 1em;
+  }
+  #member {
+    width: 40vw;
+  }
+  #mem-img > img {
+      width: 40vw;
+  }
+}
+
+section {
+  height: 100%;
+}
+
+.half-div{
+  border-style: solid;
+  border-width: 2px;
+  border-color: #0088ee;
+  border-radius: 5px;
+  margin-top: 5px;
 }
