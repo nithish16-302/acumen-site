@@ -22,11 +22,13 @@ def clean_data(data_dict):
 #All other views are just for handling POST data
 def acuthon(request):
     payment_status = "Pending"
+    participants = None
     if request.user.is_authenticated:
         participant = get_object_or_404(Participant, user=request.user)
         user = request.user
         team = participant.team
-        participants = [p.user.email for p in team.participant_set.filter()[:4]]
+        if team is not None:
+            participants = [p.user.email for p in team.participant_set.filter()[:4]]
         if participant.payment:
             payment_status = participant.payment.payment_status
     else:
@@ -66,7 +68,7 @@ def register(request):
         participant = Participant(user=user,college=college,contact =mobile_number)
         participant.save()
         login(request,user)
-        return redirect('acuthon:acuthon')
+        return redirect('/acuthon?redirect=true')
         
 
 def login_view(request):
@@ -88,7 +90,31 @@ def login_view(request):
         else:
             return HttpResponse("Wrong")
         return HttpResponse("Received")
-        
+
+@login_required(login_url='/acuthon/login/')
+def team(request):
+    if request.method == 'POST':
+        form_data = clean_data(dict(request.POST))
+        theme = form_data['theme']
+        team = Team.objects.get(name=form_data['name'])
+        team.theme = form_data['theme']
+        team.project_link = form_data['project_link']
+        team.save()
+        participants = [
+            form_data['participant1'],
+            form_data['participant2'],
+            form_data['participant3'],
+            form_data['participant4']
+        ]
+        for participant in participants:
+            try:
+                participant_obj = Participant.objects.get(user__email=participant)
+                participant_obj.team = team
+                participant_obj.save()
+            except:
+                continue
+        return redirect('/acuthon?redirect=true')
+
 
 @login_required(login_url='/acuthon/login/')
 def team_create(request):
