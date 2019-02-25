@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -11,15 +11,37 @@ API_KEY = 'f1761e15f5415be96a7248dea2bbdaf0'
 AUTH_TOKEN = 'f509e1c1b11e28cad3260de8620b1456'
 
 
+def clean_data(data_dict):
+    for key in data_dict.keys():
+        data_dict[key] = data_dict[key][0]
+
+    return data_dict
+
 # Create your views here.
 #All get related links are displayed in acuthon itself using modals or some divs
 #All other views are just for handling POST data
 def acuthon(request):
-    return render(request, 'index.html')
+    payment_status = "Pending"
+    if request.user.is_authenticated:
+        participant = get_object_or_404(Participant, user=request.user)
+        user = request.user
+        team = participant.team
+        if participant.payment:
+            payment_status = participant.payment.payment_status
+    else:
+        participant = None
+        user = None
+        team = None
+    return render(request, 'index.html', context={
+        'participant': participant,
+        'user': user,
+        'team': team,
+        'payment_status': payment_status
+    })
 
 def logout_view(request):
     logout(request)
-    return redirect('acuthon:acuthon')
+    return redirect('/acuthon')
 
 def register(request):
     """
@@ -36,7 +58,7 @@ def register(request):
         password = request.POST.get('password')
         mobile_number = request.POST.get('mobile_number')
         college = request.POST.get('college')
-        
+    
         user = User.objects.create_user(username=email,email=email,password=password,first_name=fname)
         participant = Participant(user=user,college=college,contact =mobile_number)
         participant.save()
@@ -66,15 +88,59 @@ def login_view(request):
         
 
 @login_required(login_url='/acuthon/login/')
-def teams(request):
+def team_create(request):
     """
     POST:
     Create team and add participants as CSV
     """
     if request.method == 'POST':
-        return HttpResponse('POST called')
-    elif request.method == 'GET':
-        return HttpResponse('GET called')
+        new_team = Team.objects.create(
+            name=request.POST.get('name'),
+            team_lead = request.user.email
+        )
+        new_team.save()
+        print(new_team.name, new_team.team_lead)
+        participant = request.user.participant
+        participant.team = new_team
+        participant.save()
+        return redirect('/acuthon?redirect=true')
+
+@login_required(login_url='/acuthon/login/')
+def team_join(request):
+    """
+    POST:
+    Create team and add participants as CSV
+    """
+    if request.method == 'POST':
+        try:
+            team = Team.objects.get(
+                name=request.POST.get('name')
+            )
+            participant = request.user.participant
+            participant.team = team
+            participant.save()
+        except:
+            return redirect('/acuthon?redirect=true&join=false')
+        
+        return redirect('/acuthon?redirect=true')
+
+@login_required(login_url='/acuthon/login/')
+def participant(request):
+    """
+    POST:
+    Create team and add participants as CSV
+    """
+    if request.method == 'POST':
+        form_data = clean_data(dict(request.POST))
+        request.user.first_name = form_data['first_name']
+        request.user.email = form_data['email']
+        request.user.save()
+        participant = request.user.participant
+        participant.college = form_data['college']
+        participant.branch = form_data['branch']
+        participant.contact = form_data['contact']
+        participant.save()
+        return redirect('/acuthon?redirect=true')        
 
 
 #Move the creation of Payment to record to payment_webhook

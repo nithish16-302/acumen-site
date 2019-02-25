@@ -32,35 +32,54 @@ $('.navbar-collapse ul li a').click(function() {
     $(".navbar-collapse").collapse('hide');
 });
 
-function init() {
-    // Basic options for a simple Google Map
-    // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-    var mapOptions = {
-        // How zoomed in you want the map to start at (always required)
-        zoom: 15,
+function getFormData($form){
+    var unindexed_array = $form.serializeArray();
+    var indexed_array = {};
 
-        // The latitude and longitude to center the map (always required)
-        center: new google.maps.LatLng(-12.200625, -38.973448),
-
-        // Disables the default Google Maps UI components
-        disableDefaultUI: true,
-        scrollwheel: false,
-        draggable: false,
-    };
-
-    // Get the HTML DOM element that will contain your map
-    // We are using a div with id="map" seen below in the <body>
-    var mapElement = document.getElementById('map');
-
-    // Create the Google Map using out element and options defined above
-    map = new google.maps.Map(mapElement, mapOptions);
-
-    // Custom Map Marker Icon - Customize the map-marker.png file to customize your icon
-    var image = 'img/map-marker.png';
-    var myLatLng = new google.maps.LatLng(-12.200625, -38.973448);
-    var beachMarker = new google.maps.Marker({
-        position: myLatLng,
-        title: 'MP 55',
-        map: map
+    $.map(unindexed_array, function(n, i){
+        indexed_array[n['name']] = n['value'];
     });
+
+    return indexed_array;
 }
+
+function saveParticipantDetails(e){
+    e.preventDefault();
+    $form = $("#participantDetails");
+    formData = getFormData($form)
+    $.post(
+        $form.attr('action'),
+        formData
+    )
+}
+
+function editOnEnter(e){
+    e.srcElement.readOnly = false;
+}
+
+function disableOnLeave(e){
+    e.srcElement.readOnly = true;
+}
+
+function init(){
+    form_inputs = $('.details-input');
+    for(var i =0; i < form_inputs.length; i++){
+        form_inputs[i].readOnly = true;
+        form_inputs[i].onmouseenter = editOnEnter;
+        form_inputs[i].onmouseleave = disableOnLeave;
+    }
+}
+
+$('document').ready(function (){
+    init();
+    if (window.location.search == "?redirect=true"){
+        $('#registrations').click();
+    }
+});
+
+$('.details-input').keydown(function(e){
+    if (e.keyCode == 65 && (e.ctrlKey || e.metaKey)) {
+        console.log(e)
+        e.target.select()
+    }
+})

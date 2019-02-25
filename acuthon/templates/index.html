@@ -78,7 +78,7 @@
               <a class="page-scroll" href="#about">Hackathon</a>
             </li>
             <li>
-              <a class="page-scroll" href="#generalRules">Registrations</a>
+              <a id="registrations" class="page-scroll" href="#generalRules">Registrations</a>
             </li>
             <li>
               <a class="page-scroll" href="#schedule">Agenda</a>
@@ -147,25 +147,25 @@
                 {% csrf_token %}
                 <div class="form-group">
                   <label class="control-label" for="first_name">Name : </label>
-                  <input class="form-control" id="first_name" name="first_name" type="text" placeholder="Enter Name" />
+                  <input class="form-control" name="first_name" type="text" placeholder="Enter Name" required />
                 </div>
                 
                 <div class="form-group">
                   <label class="control-label" for="email">Email ID : </label>
-                  <input class="form-control" name="email" type="email" placeholder="Enter Email"/>
+                  <input class="form-control" name="email" type="email" placeholder="Enter Email" required />
                 </div>
                 
                 <div class="form-group">
                   <label class="control-label" for="password">Password : </label>
-                  <input class="form-control" name="password" type="password" placeholder="Enter Password"/>
+                  <input class="form-control" name="password" type="password" placeholder="Enter Password" required />
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="mobile_number">Phone Number : </label>
-                    <input class="form-control" name="mobile_number" type="tel" placeholder="Enter Mobile Number"/>
+                    <input class="form-control" name="mobile_number" type="tel" placeholder="Enter Mobile Number" required />
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="college">College : </label>
-                    <input class="form-control" name="college" type="tel" placeholder="Enter College Name"/>
+                    <input class="form-control" name="college" type="tel" placeholder="Enter College Name" required />
                 </div>
                 <span class="form-group">
                     <input class="form-control btn btn-primary btn-large" form="form1" type="submit" value="Submit"/>                 
@@ -188,20 +188,20 @@
               <h4 class="modal-title" id="myModalLabel">Acuthon Login</h4>
             </div>
             <div class="modal-body">
-              <form action="/acuthon/login" method="post">
+              <form id="login" action="/acuthon/login" method="post">
                 {% csrf_token %}
 
                 <div class="form-group">
                     <label class="control-label" for="email">Email ID : </label>
-                    <input class="form-control" name="email" type="email" placeholder="Enter Email"/>
-                  </div>
+                    <input class="form-control" name="email" type="email" placeholder="Enter Email" required />
+                </div>
                   
                   <div class="form-group">
                     <label class="control-label" for="password">Password : </label>
-                    <input class="form-control" name="password" type="password" placeholder="Enter Password"/>
+                    <input class="form-control" name="password" type="password" placeholder="Enter Password" required />
                   </div>
 
-                <input class="form-control" class="btn btn-primary" name="submit" type="submit" />
+                <input class="form-control btn btn-primary" name="submit" type="submit" />
               </form>
               <p style="font-size:15px; padding:2px; margin:5px;">Didn't register yet? Register yourself <a data-dismiss="modal" href="#modal-reg" data-toggle="modal">here</a> </p>
             </div>
@@ -272,31 +272,156 @@
       <div class="download-section">
         <div class="container">
           <div class="col-lg-8 col-lg-offset-2">
-            <h2>We will have rules and instructions shown up here</h2>
+            <h2>Participants and Team</h2>
           </div>
           <div class="row">
             <div class="col-lg-6 half-div">
-              {%if request.user.is_authenticated%}
+              {% if request.user.is_authenticated %}
                 <h4>Your details</h4>
-                <span class="btn-group" role="group" aria-label="Basic example">
-                  <a class="btn btn-primary" href="/acuthon/logout">Login now</a>
-                  <a class="btn btn-primary" href="acuthon/pay">Pay</a>
+                <form role="form" action="/acuthon/participant" method="POST" id="participantDetails">
+
+                  {% csrf_token %}
+
+                  <div class="form-group">
+                    <label class="control-label" for="first_name">Name </label>
+                    <input class="form-control details-input" id="first_name" name="first_name" type="text" placeholder="Enter Name" 
+                      value="{{user.first_name}}"/>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label class="control-label" for="email">Email ID </label>
+                    <input class="form-control details-input" name="email" type="email" placeholder="Enter Email"
+                      value="{{user.email}}"/>
+                  </div>
+                  
+                  <div class="form-group">
+                      <label class="control-label" for="mobile_number">Phone Number </label>
+                      <input class="form-control details-input" name="contact" type="tel" placeholder="Enter Mobile Number"
+                        value="{{participant.contact}}"/>
+                  </div>
+
+                  <div class="form-group">
+                      <label class="control-label" for="college">College </label>
+                      <input class="form-control details-input" name="college" type="text" placeholder="Enter College Name"
+                        value="{{participant.college}}"/>
+                  </div>
+
+                  <div class="form-group">
+                      <label class="control-label" for="branch">Branch </label>
+                      <input class="form-control details-input" name="branch" type="text" placeholder="Enter Branch Name"
+                        value="{{participant.branch}}"/>
+                  </div>
+
+                  <div class="form-group">
+                      <label class="control-label" for="payment">Payment status </label>
+                      <input class="form-control details-input" name="payment" type="text" value="{{payment_status}}" disabled/>
+                  </div>
+                  
+                  <input class="btn btn-primary" form="participantDetails" type="submit" value="Save Details"/> 
+                </form>
+                <br/>
+                <span class="form-group">
+                    <span class="btn-group" role="group" aria-label="Basic example">             
+                      <a class="btn btn-primary" href="/acuthon/pay">Pay</a>
+                      <a class="btn btn-primary" href="/acuthon/logout">Logout</a>
+                    </span>
                 </span>
-              {%else%}
+              {% else %}
                 <h4>Please login to view your details</h4>
                 <span class="btn-group" role="group" aria-label="Basic example">
                   <a data-dismiss="modal" class="btn btn-primary" href="#modal-login" data-toggle="modal">Login now</a>
                   <a data-dismiss="modal" class="btn btn-primary" href="#modal-reg" data-toggle="modal">Register now</a>
                 </span>                
-              {%endif%}
+              {% endif %}
             </div>
             <div class="col-lg-6 half-div">
-              {%if request.user.is_authenticated%}
+              {% if request.user.is_authenticated %}
                 <h4>Your Team details</h4>
-              {%else%}
+                {% if participant.team %}
+                  <form action="/acuthon/team" method="post">
+                    {% csrf_token %}
+
+                      <div class="form-group">
+                        <label class="control-label" for="email">Team Name </label>
+                        <input class="form-control details-input" name="name" type="email" placeholder="Enter Team name"
+                         value="{{ team.name }}"/>
+                      </div>
+                      
+                      <div class="form-group">
+                        <label class="control-label" for="theme">Theme </label>
+                        <select id="theme" class="form-control details-input" name="theme">
+                          <option value="XR - AR/MR/VR">XR - AR/MR/VR</option>
+                          <option value="NGO APPLICATIONS">NGO APPLICATIONS</option>
+                          <option value="INTELLIGENT APPLICATIONS">INTELLIGENT APPLICATIONS</option>
+                          <option value="WOMEN SAFETY">WOMEN SAFETY</option>
+                          <option value="EDUTAINMENT">EDUTAINMENT</option>
+                          <option value="SMART CITY">SMART CITY</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="control-label" for="password">Project link </label>
+                        <input class="form-control details-input" name="password" type="url" placeholder="Enter project"
+                         value="{{ team.project_link }}"/>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="control-label" for="participant1">Particpant 1 </label>
+                        <input class="form-control details-input" name="participant1" type="text" placeholder="Enter participant email"
+                         value="{{ team.name }}"/>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="control-label" for="participant2">Particpant 2 </label>
+                        <input class="form-control details-input" name="participant2" type="text" placeholder="Enter participant email"
+                         value="{{ team.name }}"/>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="control-label" for="participant3">Particpant 3 </label>
+                        <input class="form-control details-input" name="participant3" type="text" placeholder="Enter participant email"
+                         value="{{ team.name }}"/>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="control-label" for="participant4">Particpant 4 </label>
+                        <input class="form-control details-input" name="participant4" type="text" placeholder="Enter participant email"
+                         value="{{ team.name }}"/>
+                      </div>
+
+                    <input class="form-control btn btn-primary" name="submit" type="submit" />
+                  </form>
+                  
+                {% else %}
+                  <form id="teamDetailsCreate" action="/acuthon/team/create" method="post">
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                      <label class="control-label" for="name">Team Name </label>
+                      <input class="form-control details-input" name="name" type="text" placeholder="Enter Team name to create"/>
+                    </div>
+
+                    <input class="form-control btn btn-primary" value="Create Team" type="submit"/>
+                    
+                  </form>
+                  <label>or</label>
+                  <form id="teamDetailsJoin" action="/acuthon/team/join" method="post">
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                      <label class="control-label" for="name">Team Name </label>
+                      <input class="form-control details-input" name="name" type="text" placeholder="Enter Team name to join"/>
+                    </div>
+
+                    <input class="form-control btn btn-primary" value="Join Team" type="submit"/>
+                  </form>
+                {% endif %}
+                
+                
+              {% else %}
                 <h4>Please login to view your Team details</h4>
                 <a data-dismiss="modal" class="btn btn-primary" href="{% if request.user.is_authenticated %}#modal-team{% else %}#modal-login{% endif %}" data-toggle="modal">Create Team</a>
-              {%endif%}
+              {% endif %}
             </div>
           </div>
         </div>
@@ -441,7 +566,9 @@
           </div>
         </div>
         <div id="map">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.6508028487683!2d78.380425615035!3d17.38052818808274!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb942a2497f349%3A0x5c30ca8d2ffb8734!2sVasavi+College+of+Engineering!5e0!3m2!1sen!2sin!4v1550865807423" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
+          <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.6508028487683!2d78.380425615035!3d17.38052818808274!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb942a2497f349%3A0x5c30ca8d2ffb8734!2sVasavi+College+of+Engineering!5e0!3m2!1sen!2sin!4v1550865807423" 
+          width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
       </div>
     </section>
@@ -453,7 +580,26 @@
         <div class="col-lg-8 col-lg-offset-2">
           <h2>Acuthon - Edition I</h2>
           <p>Feel free to get in touch with us.</p>
-          <p>Add contacts here</p>
+          <div class="section" style="width:100%">
+              <div id="member">
+                  <div id="details">
+                      <h3>Mahendra Pamidi</h3>
+                      <p><strong>Contact: </strong>97001 83746</p>
+                  </div>
+              </div>
+              <div id="member">
+                  <div id="details">
+                      <h3>Krushi Raj Tula</h3>
+                      <p><strong>Contact: </strong>81438 27431</p>
+                  </div>
+              </div>
+              <div id="member">
+                  <div id="details">
+                      <h3>Krushi Raj Tula</h3>
+                      <p><strong>Contact: </strong>81438 27431</p>
+                  </div>
+              </div>
+          </div>
           <p>Mail us at <a href="mailto:acumen.it.vce+support@gmail.com">acumen.it.vce+support@gmail.com</a></p>
         </div>
       </div>
@@ -475,10 +621,11 @@
     <!-- Plugin JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
-    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCe7xQb1YWBLPDqFYAKE4G8_ysGyfuYyPg"></script-->
-
     <!-- Theme JavaScript -->
     <script src="{% static 'js/grayscale.js' %}"></script>
+    <script type="text/javascript">
+      var options = ["XR - AR/MR/VR","NGO APPLICATIONS","INTELLIGENT APPLICATIONS","WOMEN SAFETY","EDUTAINMENT","SMART CITY"]
+      $('#theme').selectedIndex = options.indexOf("{{ team.theme }}")
+    </script>
   </body>
 </html>

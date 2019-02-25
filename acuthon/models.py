@@ -21,7 +21,8 @@ class Team(models.Model):
                     )
     
     name = models.CharField(max_length=128)
-    project_link = models.CharField(max_length=1024)
+    team_lead = models.CharField(max_length=1024, default=None)
+    project_link = models.CharField(max_length=1024, blank=True)
     theme = models.CharField(max_length=64, choices=THEME_CHOICES)
 
 class Payment(models.Model):
@@ -45,5 +46,5 @@ class Participant(models.Model):
     year = models.CharField(max_length = 3, choices = YEAR_CHOICES, default = "I",blank=True)
     branch = models.CharField(max_length=128,blank=True)
     contact = models.CharField(max_length=15)
-    payment_id = models.ForeignKey(Payment,on_delete=models.SET_NULL,null=True,blank=True)
+    payment = models.ForeignKey(Payment,on_delete=models.SET_NULL,null=True,blank=True)
     team = models.ForeignKey(Team,on_delete=models.SET_NULL,null=True,blank=True)
