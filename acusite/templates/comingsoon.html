@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Coming Soon 4</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{% static 'img/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/iconic/css/material-design-iconic-font.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	
+	<div class="bg-g1 size1 flex-w flex-col-c-sb p-l-15 p-r-15 p-t-55 p-b-35 respon1">
+		<span></span>
+		<div class="flex-col-c p-t-50 p-b-50">
+			<h3 class="l1-txt1 txt-center p-b-10">
+				Coming Soon
+			</h3>
+
+			<p class="txt-center l1-txt2 p-b-60">
+				Our website is under construction. Check back on
+			</p>
+
+			<div class="flex-w flex-c cd100 p-b-82">
+				<div class="flex-col-c-m size2 how-countdown">
+					<span class="l1-txt3 p-b-9 days">03</span>
+					<span class="s1-txt1">Day</span>
+				</div>
+
+				<div class="flex-col-c-m size2 how-countdown">
+					<span class="l1-txt3 p-b-9 hours">03</span>
+					<span class="s1-txt1">Month</span>
+				</div>
+
+				<div class="flex-col-c-m size2 how-countdown">
+					<span class="l1-txt3 p-b-9 minutes">2019</span>
+					<span class="s1-txt1">Year</span>
+				</div>
+
+				<div class="flex-col-c-m size2 how-countdown">
+					<span class="l1-txt3 p-b-9 seconds">12:00</span>
+					<span class="s1-txt1">AM</span>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<span class="s1-txt3 txt-center">
+			@ 2019 Acumen IT. Designed by Acumen IT
+		</span>
+		
+	</div>
+
+	
+
+<!--===============================================================================================-->	
+	<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/countdowntime/moment.min.js' %}"></script>
+	<script src="{% static 'vendor/countdowntime/moment-timezone.min.js' %}"></script>
+	<script src="{% static 'vendor/countdowntime/moment-timezone-with-data.min.js' %}"></script>
+	<script src="{% static 'vendor/countdowntime/countdowntime.js' %}"></script>
+	<script>
+		$('.cd100').countdown100({
+			// Set Endtime here
+			// Endtime must be > current time
+			endtimeYear: 2019,
+			endtimeMonth: 03,
+			endtimeDate: 03' %}{% static ',
+			endtimeHours: 00,
+			endtimeMinutes: 0,
+			endtimeSeconds: 0,
+			timeZone: "" 
+			// ex:  timeZone: "America/New_York", can be empty
+			// go to " http://momentjs.com/timezone/ " to get timezone
+		});
+	</script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/tilt/tilt.jquery.min.js' %}"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+		window.alert('You will be redirected to Acuthon in 3 seconds');
+		setTimeout(function(){
+			window.location = 'acuthon'
+		}, 3000);
+	</script>
+<!--===============================================================================================-->
+	<script src="{% static 'js/main.js' %}"></script>
+
+</body>
+</html>

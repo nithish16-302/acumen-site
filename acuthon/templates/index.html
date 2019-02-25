@@ -322,7 +322,7 @@
                 <br/>
                 <span class="form-group">
                     <span class="btn-group" role="group" aria-label="Basic example">             
-                      <a class="btn btn-primary" href="/acuthon/pay">Pay</a>
+                      {% if paid %}{% else %}<a class="btn btn-primary" href="/acuthon/pay">Pay</a>{% endif %}
                       <a class="btn btn-primary" href="/acuthon/logout">Logout</a>
                     </span>
                 </span>

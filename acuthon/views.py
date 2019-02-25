@@ -23,25 +23,31 @@ def clean_data(data_dict):
 def acuthon(request):
     payment_status = "Pending"
     participants = None
+    paid = False
+    participant = None
+    user = None
+    team = None
     if request.user.is_authenticated:
-        participant = get_object_or_404(Participant, user=request.user)
         user = request.user
-        team = participant.team
-        if team is not None:
-            participants = [p.user.email for p in team.participant_set.filter()[:4]]
-        if participant.payment:
-            payment_status = participant.payment.payment_status
-    else:
-        participant = None
-        user = None
-        team = None
-        participants = None
+        try:
+            participant = Participant.objects.get(user=request.user)
+            team = participant.team
+            if team is not None:
+                participants = [p.user.email for p in team.participant_set.filter()[:4]]
+            if participant.payment:
+                payment_status = participant.payment.payment_status
+            if payment_status == "Credit":
+                paid = True
+        except:
+            pass
+         
     return render(request, 'index.html', context={
         'participant': participant,
         'user': user,
         'team': team,
         'participants': participants,
-        'payment_status': payment_status
+        'payment_status': payment_status,
+        'paid': paid
     })
 
 def logout_view(request):
@@ -83,8 +89,7 @@ def login_view(request):
         if user is not None:
             if user.is_active:
                 login(request,user)
-                return redirect("acuthon:acuthon")
-                
+                return redirect("/acuthon?redirect=true")
             else:
                 pass
         else:
