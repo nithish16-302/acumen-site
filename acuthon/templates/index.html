@@ -368,25 +368,25 @@
                       <div class="form-group">
                         <label class="control-label" for="participant1">Particpant 1 </label>
                         <input class="form-control details-input" name="participant1" type="text" placeholder="Enter participant email"
-                         value="{{ team.name }}"/>
+                         value="{{ participants.0 }}"/>
                       </div>
 
                       <div class="form-group">
                         <label class="control-label" for="participant2">Particpant 2 </label>
                         <input class="form-control details-input" name="participant2" type="text" placeholder="Enter participant email"
-                         value="{{ team.name }}"/>
+                         value="{{ participants.1 }}"/>
                       </div>
 
                       <div class="form-group">
                         <label class="control-label" for="participant3">Particpant 3 </label>
                         <input class="form-control details-input" name="participant3" type="text" placeholder="Enter participant email"
-                         value="{{ team.name }}"/>
+                         value="{{ participants.2 }}"/>
                       </div>
 
                       <div class="form-group">
                         <label class="control-label" for="participant4">Particpant 4 </label>
                         <input class="form-control details-input" name="participant4" type="text" placeholder="Enter participant email"
-                         value="{{ team.name }}"/>
+                         value="{{ participants.3 }}"/>
                       </div>
 
                     <input class="form-control btn btn-primary" name="submit" type="submit" />
@@ -625,7 +625,7 @@
     <script src="{% static 'js/grayscale.js' %}"></script>
     <script type="text/javascript">
       var options = ["XR - AR/MR/VR","NGO APPLICATIONS","INTELLIGENT APPLICATIONS","WOMEN SAFETY","EDUTAINMENT","SMART CITY"]
-      $('#theme').selectedIndex = options.indexOf("{{ team.theme }}")
+      $('#theme')[0].selectedIndex = options.indexOf("{{ team.theme }}")
     </script>
   </body>
 </html>

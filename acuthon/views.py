@@ -26,16 +26,19 @@ def acuthon(request):
         participant = get_object_or_404(Participant, user=request.user)
         user = request.user
         team = participant.team
+        participants = [p.user.email for p in team.participant_set.filter()[:4]]
         if participant.payment:
             payment_status = participant.payment.payment_status
     else:
         participant = None
         user = None
         team = None
+        participants = None
     return render(request, 'index.html', context={
         'participant': participant,
         'user': user,
         'team': team,
+        'participants': participants,
         'payment_status': payment_status
     })
 
