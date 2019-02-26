@@ -141,15 +141,18 @@ def team_create(request):
     Create team and add participants as CSV
     """
     if request.method == 'POST':
-        new_team = Team.objects.create(
-            name=request.POST.get('name'),
-            team_lead = request.user.email
-        )
-        new_team.save()
-        print(new_team.name, new_team.team_lead)
-        participant = request.user.participant
-        participant.team = new_team
-        participant.save()
+        try:
+            new_team = Team.objects.create(
+                name=request.POST.get('name'),
+                team_lead = request.user.email
+            )
+            new_team.save()
+            print(new_team.name, new_team.team_lead)
+            participant = request.user.participant
+            participant.team = new_team
+            participant.save()
+        except:
+            return redirect('/acuthon?redirect=true&teamcreate=false')            
         return redirect('/acuthon?redirect=true&teamcreate=true')
 
 @login_required(login_url='/acuthon/login/')
@@ -164,7 +167,8 @@ def team_join(request):
                 name=request.POST.get('name')
             )
             participant = request.user.participant
-            if team.participant_set.filter().__len__() < 4 and participant.team is not None:
+            print(team.participant_set.filter().__len__())
+            if team.participant_set.filter().__len__() < 4 and participant.team is None:
                 participant.team = team
                 participant.save()
             else:

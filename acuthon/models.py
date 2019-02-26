@@ -20,7 +20,7 @@ class Team(models.Model):
                         (IAPPS, 'INTELLIGENTS APPLICATIONS')
                     )
     
-    name = models.CharField(max_length=128)
+    name = models.CharField(max_length=128, unique=True)
     team_lead = models.CharField(max_length=1024, default=None)
     project_link = models.CharField(max_length=1024, blank=True)
     theme = models.CharField(max_length=64, choices=THEME_CHOICES)

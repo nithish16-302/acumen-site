@@ -93,6 +93,9 @@ $('document').ready(function (){
             $('#message')[0].innerHTML = ('New team has been created successfully.');
             $('#message')[0].style.color = "#0088ee";
         }
+        else if(searchParams[1] == "teamcreate=false"){
+            $('#message')[0].innerHTML = ('Team name is already taken or there is an issue creating new team.');
+        }
         else if(searchParams[1] == "join=false"){
             $('#message')[0].innerHTML = ('There was an error joining into the team.');
         }
