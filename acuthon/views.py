@@ -93,7 +93,7 @@ def login_view(request):
             else:
                 pass
         else:
-            return HttpResponse("Wrong")
+            return redirect("/acuthon?redirect=true&wrong_credentials=true")
         return HttpResponse("Received")
 
 @login_required(login_url='/acuthon/login/')

@@ -75,6 +75,10 @@ $('document').ready(function (){
     if (window.location.search == "?redirect=true"){
         $('#registrations').click();
     }
+    else if(window.location.search == "?redirect=true&wrong_credentials=true"){
+        $('#registrations').click();
+        window.alert("Wrong credentials, please try again.")
+    }
 });
 
 $('.details-input').keydown(function(e){
