@@ -163,8 +163,8 @@ def team_join(request):
             team = Team.objects.get(
                 name=request.POST.get('name')
             )
-            if team.participant_set.filter().__len__() < 4:
-                participant = request.user.participant
+            participant = request.user.participant
+            if team.participant_set.filter().__len__() < 4 and participant.team is not None:
                 participant.team = team
                 participant.save()
             else:
