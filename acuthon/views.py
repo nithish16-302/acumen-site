@@ -98,7 +98,7 @@ def login_view(request):
             return redirect("/acuthon?redirect=true&loginfailed=true")
         return HttpResponse("Received")
 
-@login_required(login_url='/acuthon/login/')
+@login_required(login_url='/acuthon/login')
 def team(request):
     if request.method == 'POST':
         form_data = clean_data(dict(request.POST))
@@ -123,7 +123,7 @@ def team(request):
         return redirect('/acuthon?redirect=true&teamupdate=true')
 
 
-@login_required(login_url='/acuthon/login/')
+@login_required(login_url='/acuthon/login')
 def team_leave(request):
     """
     Leave team
@@ -134,7 +134,7 @@ def team_leave(request):
         participant.save()
         return redirect('/acuthon?redirect=true&leave=true')
 
-@login_required(login_url='/acuthon/login/')
+@login_required(login_url='/acuthon/login')
 def team_create(request):
     """
     POST:
@@ -155,7 +155,7 @@ def team_create(request):
             return redirect('/acuthon?redirect=true&teamcreate=false')            
         return redirect('/acuthon?redirect=true&teamcreate=true')
 
-@login_required(login_url='/acuthon/login/')
+@login_required(login_url='/acuthon/login')
 def team_join(request):
     """
     POST:
@@ -178,7 +178,7 @@ def team_join(request):
         
         return redirect('/acuthon?redirect=true&join=true')
 
-@login_required(login_url='/acuthon/login/')
+@login_required(login_url='/acuthon/login')
 def participant(request):
     """
     POST:
