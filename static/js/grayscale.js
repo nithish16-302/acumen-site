@@ -112,7 +112,11 @@ $('document').ready(function (){
             $('#message')[0].innerHTML = ('Your details have been updated.');
         }
         else if(searchParams[1] == "leave=false"){
+            $('#message')[0].innerHTML = ('Couldn\'t leave team.');
+        }
+        else if(searchParams[1] == "leave=true"){
             $('#message')[0].innerHTML = ('You left the team successfully.');
+            $('#message')[0].style.color = "#0088ee";
         }
         $('#registrations')[0].click();
     }

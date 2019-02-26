@@ -10,6 +10,7 @@ urlpatterns = [
     path('team', views.team, name='acuthon_team_create'),
     path('team/create', views.team_create, name='acuthon_team_create'),
     path('team/join', views.team_join, name='acuthon_team_join'),
+    path('team/leave', views.team_leave, name='acuthon_team_leave'),
     path('logout',views.logout_view,name='acuthon_logout'),
     path('pay',views.payment_request,name='acuthon_pay'),
     path('payment_response',views.payment_response, name='acuthon_pay_response'),

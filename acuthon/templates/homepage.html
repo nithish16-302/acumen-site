@@ -337,7 +337,8 @@
                     <input class="form-control btn btn-primary" name="submit" type="submit" />
                   </form>
                   <br/>
-                  <form action='/team/leave' method='post'>
+                  <form action='/acuthon/team/leave' method='post'>
+                    {% csrf_token %}
                     <input class="form-control btn btn-danger" name="submit" type="submit" value="Leave team"/>
                   </form>
                   
