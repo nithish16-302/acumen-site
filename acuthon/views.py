@@ -20,7 +20,8 @@ def clean_data(data_dict):
 # Create your views here.
 #All get related links are displayed in acuthon itself using modals or some divs
 #All other views are just for handling POST data
-def acuthon(request):
+def acuthon(request, *args, **kwargs):
+    print(kwargs)
     payment_status = "Pending"
     participants = None
     paid = False
@@ -47,7 +48,8 @@ def acuthon(request):
         'team': team,
         'participants': participants,
         'payment_status': payment_status,
-        'paid': paid
+        'paid': paid,
+        **kwargs
     })
 
 def logout_view(request):
@@ -74,7 +76,7 @@ def register(request):
         participant = Participant(user=user,college=college,contact =mobile_number)
         participant.save()
         login(request,user)
-        return redirect('/acuthon?redirect=true')
+        return redirect('/acuthon?redirect=true&registered=true')
         
 
 def login_view(request):
@@ -89,11 +91,11 @@ def login_view(request):
         if user is not None:
             if user.is_active:
                 login(request,user)
-                return redirect("/acuthon?redirect=true")
+                return redirect("/acuthon?redirect=true&login=true")
             else:
                 pass
         else:
-            return redirect("/acuthon?redirect=true&wrong_credentials=true")
+            return redirect("/acuthon?redirect=true&loginfailed=true")
         return HttpResponse("Received")
 
 @login_required(login_url='/acuthon/login/')
@@ -118,8 +120,19 @@ def team(request):
                 participant_obj.save()
             except:
                 continue
-        return redirect('/acuthon?redirect=true')
+        return redirect('/acuthon?redirect=true&teamupdate=true')
 
+
+@login_required(login_url='/acuthon/login/')
+def team_leave(request):
+    """
+    Leave team
+    """
+    if request.method == 'POST':
+        participant = Participant.objects.get(user=request.user)
+        participant.team = None
+        participant.save()
+        return redirect('/acuthon?redirect=true&leave=true')
 
 @login_required(login_url='/acuthon/login/')
 def team_create(request):
@@ -137,7 +150,7 @@ def team_create(request):
         participant = request.user.participant
         participant.team = new_team
         participant.save()
-        return redirect('/acuthon?redirect=true')
+        return redirect('/acuthon?redirect=true&teamcreate=true')
 
 @login_required(login_url='/acuthon/login/')
 def team_join(request):
@@ -150,13 +163,16 @@ def team_join(request):
             team = Team.objects.get(
                 name=request.POST.get('name')
             )
-            participant = request.user.participant
-            participant.team = team
-            participant.save()
+            if team.participant_set.filter().__len__() < 4:
+                participant = request.user.participant
+                participant.team = team
+                participant.save()
+            else:
+                raise ArithmeticError('Count exceeded')
         except:
             return redirect('/acuthon?redirect=true&join=false')
         
-        return redirect('/acuthon?redirect=true')
+        return redirect('/acuthon?redirect=true&join=true')
 
 @login_required(login_url='/acuthon/login/')
 def participant(request):
@@ -174,7 +190,7 @@ def participant(request):
         participant.branch = form_data['branch']
         participant.contact = form_data['contact']
         participant.save()
-        return redirect('/acuthon?redirect=true')        
+        return redirect('/acuthon?redirect=true&update=true')        
 
 
 #Move the creation of Payment to record to payment_webhook
@@ -222,6 +238,20 @@ def payment_request(request):
 #For webhook from instamojo
 def payment_webhook(request):
     print(request.POST)
+    '''
+    An acknowledgment page for the user about the payment status.
+    (May use the index page and show the status)
+    '''
+    payment = Payment(user = request.user,payment_id =request.GET.get('payment_id'),
+    payment_status = request.GET.get('payment_status'),payment_request_id=request.GET.get('payment_request_id'))
+    payment.save()
+    
+    if request.GET.get('payment_status') == 'Credit':
+        return redirect('/acuthon/?redirect=true&payment=true')
+    elif request.GET.get('payment_status') == 'Failed':
+        return redirect('/acuthon/?redirect=true&payment=false')
+    else:
+        return HttpResponse("Wrong output!")
 
 
         

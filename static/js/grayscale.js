@@ -72,12 +72,49 @@ function init(){
 
 $('document').ready(function (){
     init();
-    if (window.location.search == "?redirect=true"){
-        $('#registrations').click();
-    }
-    else if(window.location.search == "?redirect=true&wrong_credentials=true"){
-        $('#registrations').click();
-        window.alert("Wrong credentials, please try again.")
+    searchParams = window.location.search.split('&')
+    if (searchParams[0] == "?redirect=true"){
+        if(searchParams[1] == "registered=true"){
+            $('#message')[0].innerHTML = ('Registration successful');
+            $('#message')[0].style.color = "#0088ee";
+        }
+        else if(searchParams[1] == "login=true"){
+            $('#message')[0].innerHTML = ('Login successful');
+            $('#message')[0].style.color = "#0088ee";
+        }
+        else if(searchParams[1] == "loginfailed=true"){
+            $('#message')[0].innerHTML = ('Login unsuccessful. Invalid Credentials.');
+        }
+        else if(searchParams[1] == "teamupdate=true"){
+            $('#message')[0].innerHTML = ('Team details have been updated.');
+            $('#message')[0].style.color = "#0088ee";
+        }
+        else if(searchParams[1] == "teamcreate=true"){
+            $('#message')[0].innerHTML = ('New team has been created successfully.');
+            $('#message')[0].style.color = "#0088ee";
+        }
+        else if(searchParams[1] == "join=false"){
+            $('#message')[0].innerHTML = ('There was an error joining into the team.');
+        }
+        else if(searchParams[1] == "join=true"){
+            $('#message')[0].innerHTML = ('Joined the team successfully');
+            $('#message')[0].style.color = "#0088ee";
+        }
+        else if(searchParams[1] == "update=true"){
+            $('#message')[0].innerHTML = ('Your details have been updated.');
+            $('#message')[0].style.color = "#0088ee";
+        }
+        else if(searchParams[1] == "payment=true"){
+            $('#message')[0].innerHTML = ('Your details have been updated.');
+            $('#message')[0].style.color = "#0088ee";
+        }
+        else if(searchParams[1] == "payment=false"){
+            $('#message')[0].innerHTML = ('Your details have been updated.');
+        }
+        else if(searchParams[1] == "leave=false"){
+            $('#message')[0].innerHTML = ('You left the team successfully.');
+        }
+        $('#registrations')[0].click();
     }
 });
 
