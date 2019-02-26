@@ -1,0 +1,630 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="That's a landing page for our first Acumen IT - Acuthon">
+    <meta name="author" content="Acumen IT - Acuthon">
+
+    <title>ACUMEN HACKATHON</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="shortcut icon" href="{% static 'img/logo.png' %}" type="image/x-icon">
+
+    <!-- Custom Fonts -->
+    <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+    <!-- Theme CSS -->
+    <link href="{% static 'css/grayscale.css' %}" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,900" rel="stylesheet">
+
+    <style type="text/css" id="custom-fonts">
+      /* custom fonts */
+    @font-face {font-family: 'Roboto Regular';src: url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/RobotoRegular.eot') format('eot'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/RobotoRegular.woff') format('woff'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/RobotoRegular.svg') format('svg'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/RobotoRegular.ttf') format('truetype');}
+    @font-face {font-family: 'Roboto Medium';src: url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/RobotoMedium.eot') format('eot'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/RobotoMedium.svg') format('svg'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/RobotoMedium.ttf') format('truetype'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/RobotoMedium.woff') format('woff');}
+    @font-face {font-family: 'Roboto Bold';src: url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/RobotoBold.eot') format('eot'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/RobotoBold.svg') format('svg'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/RobotoBold.ttf') format('truetype'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/RobotoBold.woff') format('woff');}
+    @font-face {font-family: 'Apercu Regular';src: url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/apercuregularwebfont.eot') format('eot'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/apercuregularwebfont.svg') format('svg'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/apercuregularwebfont.ttf') format('truetype'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/apercuregularwebfont.woff') format('woff');}
+    @font-face {font-family: 'Apercu Medium';src: url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/apercumediumwebfont.eot') format('eot'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/apercumediumwebfont.svg') format('svg'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/apercumediumwebfont.ttf') format('truetype'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/apercumediumwebfont.woff') format('woff');}
+    @font-face {font-family: 'Apercu Bold';src: url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/apercuboldwebfont.eot') format('eot'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/apercuboldwebfont.svg') format('svg'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/apercuboldwebfont.ttf') format('truetype'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/apercuboldwebfont.woff') format('woff');}
+    @font-face {font-family: 'Sharp Sans Regular';src: url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/ss400.eot') format('eot'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/ss400.svg') format('svg'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/ss400.ttf') format('truetype'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/ss400.woff') format('woff');}
+    @font-face {font-family: 'Sharp Sans Medium';src: url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/ss500.eot') format('eot'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/ss500.svg') format('svg'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/ss500.ttf') format('truetype'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/ss500.woff') format('woff');}
+    @font-face {font-family: 'Sharp Sans Bold';src: url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/ss600.eot') format('eot'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/ss600.svg') format('svg'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/ss600.ttf') format('truetype'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/213/2136839/fonts/ss600.woff') format('woff');}
+    @font-face {font-family: 'FreigSanProBold';src: url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/251/2513351/fonts/FreigSanProBold.woff') format('woff'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/251/2513351/fonts/FreigSanProBold.ttf') format('truetype'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/251/2513351/fonts/FreigSanProBold.svg') format('svg'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/251/2513351/fonts/FreigSanProBold.otf') format('opentype');}
+    @font-face {font-family: 'FreigSanProMed';src: url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/251/2513351/fonts/FreigSanProMed.woff') format('woff'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/251/2513351/fonts/FreigSanProMed.ttf') format('truetype'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/251/2513351/fonts/FreigSanProMed.svg') format('svg'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/251/2513351/fonts/FreigSanProMed.otf') format('opentype');}
+    @font-face {font-family: 'FaktSlabProMedium';src: url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/251/2513351/fonts/FaktSlabPro-Medium.woff') format('woff'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/251/2513351/fonts/FaktSlabPro-Medium.ttf') format('truetype'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/251/2513351/fonts/FaktSlabPro-Medium.otf') format('opentype'), url('https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/id/251/2513351/fonts/FaktSlabPro-Medium.eot') format('eot');}
+    </style>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+            Menu <i class="fa fa-bars"></i>
+          </button>
+          <a class="navbar-brand page-scroll text-center" href="#page-top">
+            <img id="everloop" src="{% static 'img/logo.png' %}"/> <span class="hidden-xs hidden-sm "><span class="light">ACUMEN IT</span> Hackathon</span>
+          </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+          <ul class="nav navbar-nav">
+            <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+            <li class="hidden">
+              <a href="#page-top"></a>
+            </li>
+            <li>
+              <a class="page-scroll" href="#about">Hackathon</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="#generalRules">Registrations</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="#schedule">Agenda</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="#projects">Theme</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="#location">Location</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container -->
+    </nav>
+
+    <!-- Intro Header -->
+    <header class="intro">
+      <div class="intro-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 col-lg-12">
+             <h2>VASAVI COLLEGE OF ENGINEERING</h2>
+             <h3>Presents</h3>
+              <h1 class="brand-heading">ACUTHON-2K19</h1>
+              <p class="intro-text">WE Make IT happen</p>
+              <a href="#about" class="btn btn-circle page-scroll">
+                <i class="fa fa-angle-double-down animated"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="container content-section text-center">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          <h2>Hackathon</h2>
+          <p>Hey Geeks!! Vasavi College of Engineering presents the most innovative 24 hour hackathon  Acuthon-2K19 by IT Department as a part of our tech fest Acumen-IT 2k19...Team up with your friends,pick your theme, pitch in your ground breaking ideas and unlock the creativity in you!</p>
+
+
+            <p><strong>Challenge:</strong> Need to build a website/application within <strong>24 hours</strong> with the specified features on the selected theme.</p>
+
+          <p><strong>Prizes:</strong>Exciting cash prizes <strong>worth 15k</strong> and goodies from technical communities.</p>
+
+          <p><a href="#modal-reg" data-toggle="modal">Have some good hacks? Register yourself!</a></p>
+
+        </div>
+      </div>
+    </section>
+
+<!-- Modal -->
+      <div class="modal fade" id="modal-reg" tabindex="-1" role="dialog" >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Acuthon Registration</h4>
+            </div>
+            <div class="modal-body">
+              <form role="form" action="/acuthon/register" method="POST" id="form1">
+                
+                {% csrf_token %}
+                <div class="form-group">
+                  <label class="control-label" for="first_name">Name : </label>
+                  <input class="form-control" name="first_name" type="text" placeholder="Enter Name" required />
+                </div>
+                
+                <div class="form-group">
+                  <label class="control-label" for="email">Email ID : </label>
+                  <input class="form-control" name="email" type="email" placeholder="Enter Email" required />
+                </div>
+                
+                <div class="form-group">
+                  <label class="control-label" for="password">Password : </label>
+                  <input class="form-control" name="password" type="password" placeholder="Enter Password" required />
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="mobile_number">Phone Number : </label>
+                    <input class="form-control" name="mobile_number" type="tel" placeholder="Enter Mobile Number" required />
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="college">College : </label>
+                    <input class="form-control" name="college" type="tel" placeholder="Enter College Name" required />
+                </div>
+                <span class="form-group">
+                    <input class="form-control btn btn-primary btn-large" form="form1" type="submit" value="Submit"/>                 
+                </span>
+              </form>
+              <p style="font-size:15px; padding:2px; margin:5px;">Already registered? Try <a data-dismiss="modal" href="#modal-login" data-toggle="modal">Login</a> </p>
+                
+            </div>
+            <div class="modal-footer">
+              </br>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="modal-login" tabindex="-1" role="dialog" >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Acuthon Login</h4>
+            </div>
+            <div class="modal-body">
+              <form id="login" action="/acuthon/login" method="post">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label class="control-label" for="email">Email ID : </label>
+                    <input class="form-control" name="email" type="email" placeholder="Enter Email" required />
+                </div>
+                  
+                  <div class="form-group">
+                    <label class="control-label" for="password">Password : </label>
+                    <input class="form-control" name="password" type="password" placeholder="Enter Password" required />
+                  </div>
+
+                <input class="form-control btn btn-primary" name="submit" type="submit" />
+              </form>
+              <p style="font-size:15px; padding:2px; margin:5px;">Didn't register yet? Register yourself <a data-dismiss="modal" href="#modal-reg" data-toggle="modal">here</a> </p>
+            </div>
+            <div class="modal-footer">
+              </br>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="modal-team" tabindex="-1" role="dialog" >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Acuthon Teams</h4>
+            </div>
+            <div class="modal-body">
+              <form action="/acuthon/team" method="post">
+                {% csrf_token %}
+
+                  <div class="form-group">
+                    <label class="control-label" for="email">Team Name : </label>
+                    <input class="form-control" name="email" type="email" placeholder="Enter Email"/>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label class="control-label" for="password">Theme : </label>
+                    <input class="form-control" name="password" type="password" placeholder="Enter Password"/>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="control-label" for="password">Project link : </label>
+                    <input class="form-control" name="password" type="password" placeholder="Enter Password"/>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="control-label" for="password">Particpant 1 : </label>
+                    <input class="form-control" name="password" type="password" placeholder="Enter Password"/>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="control-label" for="password">Particpant 2 : </label>
+                    <input class="form-control" name="password" type="password" placeholder="Enter Password"/>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="control-label" for="password">Particpant 3 : </label>
+                    <input class="form-control" name="password" type="password" placeholder="Enter Password"/>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="control-label" for="password">Particpant 4 : </label>
+                    <input class="form-control" name="password" type="password" placeholder="Enter Password"/>
+                  </div>
+
+                <input class="form-control" class="btn btn-primary" name="submit" type="submit" />
+              </form>
+            </div>
+            <div class="modal-footer">
+              </br>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- General Rules Section -->
+    <section id="generalRules" class="darker-black content-section text-center ">
+      <div class="download-section">
+        <div class="container">
+          <div class="col-lg-8 col-lg-offset-2">
+            <h2>Participants and Team</h2>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 half-div">
+              {% if request.user.is_authenticated %}
+                <h4>Your details</h4>
+                <form role="form" action="/acuthon/participant" method="POST" id="participantDetails">
+
+                  {% csrf_token %}
+
+                  <div class="form-group">
+                    <label class="control-label" for="first_name">Name </label>
+                    <input class="form-control details-input" id="first_name" name="first_name" type="text" placeholder="Enter Name" 
+                      value="{{user.first_name}}"/>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label class="control-label" for="email">Email ID </label>
+                    <input class="form-control details-input" name="email" type="email" placeholder="Enter Email"
+                      value="{{user.email}}"/>
+                  </div>
+                  
+                  <div class="form-group">
+                      <label class="control-label" for="mobile_number">Phone Number </label>
+                      <input class="form-control details-input" name="contact" type="tel" placeholder="Enter Mobile Number"
+                        value="{{participant.contact}}"/>
+                  </div>
+
+                  <div class="form-group">
+                      <label class="control-label" for="college">College </label>
+                      <input class="form-control details-input" name="college" type="text" placeholder="Enter College Name"
+                        value="{{participant.college}}"/>
+                  </div>
+
+                  <div class="form-group">
+                      <label class="control-label" for="branch">Branch </label>
+                      <input class="form-control details-input" name="branch" type="text" placeholder="Enter Branch Name"
+                        value="{{participant.branch}}"/>
+                  </div>
+
+                  <div class="form-group">
+                      <label class="control-label" for="payment">Payment status </label>
+                      <input class="form-control details-input" name="payment" type="text" value="{{payment_status}}" disabled/>
+                  </div>
+                  
+                  <input class="btn btn-primary" form="participantDetails" type="submit" value="Save Details"/> 
+                </form>
+                <br/>
+                <span class="form-group">
+                    <span class="btn-group" role="group" aria-label="Basic example">             
+                      {% if paid %}{% else %}<a class="btn btn-primary" href="/acuthon/pay">Pay</a>{% endif %}
+                      <a class="btn btn-primary" href="/acuthon/logout">Logout</a>
+                    </span>
+                </span>
+              {% else %}
+                <h4>Please login to view your details</h4>
+                <span class="btn-group" role="group" aria-label="Basic example">
+                  <a data-dismiss="modal" class="btn btn-primary" href="#modal-login" data-toggle="modal">Login now</a>
+                  <a data-dismiss="modal" class="btn btn-primary" href="#modal-reg" data-toggle="modal">Register now</a>
+                </span>                
+              {% endif %}
+            </div>
+            <div class="col-lg-6 half-div">
+              {% if request.user.is_authenticated %}
+                <h4>Your Team details</h4>
+                {% if participant.team %}
+                  <form action="/acuthon/team" method="post">
+                    {% csrf_token %}
+
+                      <div class="form-group">
+                        <label class="control-label" for="email">Team Name </label>
+                        <input class="form-control details-input" name="name" type="email" placeholder="Enter Team name"
+                         value="{{ team.name }}"/>
+                      </div>
+                      
+                      <div class="form-group">
+                        <label class="control-label" for="theme">Theme </label>
+                        <select id="theme" class="form-control details-input" name="theme">
+                          <option value="XR - AR/MR/VR">XR - AR/MR/VR</option>
+                          <option value="NGO APPLICATIONS">NGO APPLICATIONS</option>
+                          <option value="INTELLIGENT APPLICATIONS">INTELLIGENT APPLICATIONS</option>
+                          <option value="WOMEN SAFETY">WOMEN SAFETY</option>
+                          <option value="EDUTAINMENT">EDUTAINMENT</option>
+                          <option value="SMART CITY">SMART CITY</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="control-label" for="password">Project link </label>
+                        <input class="form-control details-input" name="project_link" type="url" placeholder="Enter project"
+                         value="{{ team.project_link }}"/>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="control-label" for="participant1">Particpant 1 </label>
+                        <input class="form-control details-input" name="participant1" type="text" placeholder="Enter participant email"
+                         value="{{ participants.0 }}"/>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="control-label" for="participant2">Particpant 2 </label>
+                        <input class="form-control details-input" name="participant2" type="text" placeholder="Enter participant email"
+                         value="{{ participants.1 }}"/>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="control-label" for="participant3">Particpant 3 </label>
+                        <input class="form-control details-input" name="participant3" type="text" placeholder="Enter participant email"
+                         value="{{ participants.2 }}"/>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="control-label" for="participant4">Particpant 4 </label>
+                        <input class="form-control details-input" name="participant4" type="text" placeholder="Enter participant email"
+                         value="{{ participants.3 }}"/>
+                      </div>
+
+                    <input class="form-control btn btn-primary" name="submit" type="submit" />
+                  </form>
+                  
+                {% else %}
+                  <form id="teamDetailsCreate" action="/acuthon/team/create" method="post">
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                      <label class="control-label" for="name">Team Name </label>
+                      <input class="form-control details-input" name="name" type="text" placeholder="Enter Team name to create"/>
+                    </div>
+
+                    <input class="form-control btn btn-primary" value="Create Team" type="submit"/>
+                    
+                  </form>
+                  <label>or</label>
+                  <form id="teamDetailsJoin" action="/acuthon/team/join" method="post">
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                      <label class="control-label" for="name">Team Name </label>
+                      <input class="form-control details-input" name="name" type="text" placeholder="Enter Team name to join"/>
+                    </div>
+
+                    <input class="form-control btn btn-primary" value="Join Team" type="submit"/>
+                  </form>
+                {% endif %}
+                
+                
+              {% else %}
+                <h4>Please login to view your Team details</h4>
+                <a data-dismiss="modal" class="btn btn-primary" href="{% if request.user.is_authenticated %}#modal-team{% else %}#modal-login{% endif %}" data-toggle="modal">Create Team</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="content-section text-center">
+      <div class="download-section">
+        <div class="container">
+          <div class="col-lg-8 col-lg-offset-2">
+            <h2>Agenda</h2>
+            <p>From 9th March to 10th March 2019</p>
+            <div class="agenda">
+              <div class="row">
+                <div class="when col-lg-4 col-md-4 col-sm-12 col-xs-12">09/03/2019 - 8:30am</div>
+                <div class="where col-lg-4 col-md-4 col-sm-12 col-xs-12">Hackathon-Inaugration</div>
+                <div class="what col-lg-4 col-md-4 col-sm-12 col-xs-12">IT Lab V</div>
+              </div>
+            </div>
+            <div class="agenda">
+              <div class="row">
+                <div class="when col-lg-4 col-md-4 col-sm-12 col-xs-12">09/03/2019 - 9:00am</div>
+                <div class="where col-lg-4 col-md-4 col-sm-12 col-xs-12">Start Your Hack</div>
+              </div>
+            </div>
+            <div class="agenda">
+              <div class="row">
+                <div class="when col-lg-4 col-md-4 col-sm-12 col-xs-12">09/03/2019 - 12:30 pm</div>
+                <div class="where col-lg-4 col-md-4 col-sm-12 col-xs-12">Lunch</div>
+              </div>
+            </div>
+            <div class="agenda">
+              <div class="row">
+                <div class="when col-lg-4 col-md-4 col-sm-12 col-xs-12">09/03/2019 - 6:00 pm</div>
+                <div class="where col-lg-4 col-md-4 col-sm-12 col-xs-12">Review by mentors</div>
+              </div>
+            </div>
+            <div class="agenda">
+              <div class="row">
+                <div class="when col-lg-4 col-md-4 col-sm-12 col-xs-12">19/03/2019 - 8:00 pm</div>
+                <div class="where col-lg-4 col-md-4 col-sm-12 col-xs-12">Dinner</div>
+              </div>
+            </div>
+            <div class="agenda">
+              <div class="row">
+                <div class="when col-lg-4 col-md-4 col-sm-12 col-xs-12">10/03/2019 - 6:00 am</div>
+                <div class="where col-lg-4 col-md-4 col-sm-12 col-xs-12">Review By mentors</div>
+              </div>
+            </div>
+            <div class="agenda">
+              <div class="row">
+                <div class="when col-lg-4 col-md-4 col-sm-12 col-xs-12">10/03/2019 - 7:30 am</div>
+                <div class="where col-lg-4 col-md-4 col-sm-12 col-xs-12">Submit Your Code</div>
+              </div>
+            </div>
+            <div class="agenda">
+              <div class="row">
+                <div class="when col-lg-4 col-md-4 col-sm-12 col-xs-12">10/03/2019 - 8:00 am</div>
+                <div class="where col-lg-4 col-md-4 col-sm-12 col-xs-12">BreakFast</div>
+              </div>
+            </div>
+            <div class="agenda">
+              <div class="row">
+                <div class="when col-lg-4 col-md-4 col-sm-12 col-xs-12">10/03/2019 - 9:00 am</div>
+                <div class="where col-lg-4 col-md-4 col-sm-12 col-xs-12">Presentations</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="darker-black content-section">
+      <div class="download-section">
+        <div class="container">
+          <div class="col-lg-12">
+            <h2 class="text-center">Themes</h2>
+            <div class="section" style="width:100%">
+                <div id="member">
+                    <div id="mem-img">
+                        <img  src="{% static 'img/test.png' %}" >
+                    </div>
+                    <div id="details">
+                        <h3>XR - AR/VR/MR</h3>
+                    </div>
+                </div>
+                <div id="member">
+                    <div id="mem-img">
+                        <img  src="{% static 'img/test.png' %}" >
+                    </div>
+                    <div id="details">
+                        <h3>NGO Applications</h3>
+                    </div>
+                </div>
+                <div id="member">
+                    <div id="mem-img">
+                        <img  src="{% static 'img/test.png' %}" >
+                    </div>
+                    <div id="details">
+                        <h3>Intelligent Apps</h3>
+                    </div>
+                </div>
+                <div id="member">
+                    <div id="mem-img">
+                        <img  src="{% static 'img/test.png' %}" >
+                    </div>
+                    <div id="details">
+                        <h3>Edutainment</h3>
+                    </div>
+                </div>
+                <div id="member">
+                    <div id="mem-img">
+                        <img  src="{% static 'img/test.png' %}" >
+                    </div>
+                    <div id="details">
+                        <h3>Smart City</h3>
+                    </div>
+                </div>
+                <div id="member">
+                    <div id="mem-img">
+                        <img  src="{% static 'img/test.png' %}" >
+                    </div>
+                    <div id="details">
+                        <h3>Startup Ideas</h3>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="content-section text-center">
+      <div class="download-section">
+        <div class="container">
+          <div class="col-lg-8 col-lg-offset-2">
+            <h2>Location</h2>
+            <p><strong>Vasavi College of Engineering (Ramanujan Block - I Floor -IT Lab V)</strong></p>
+          </div>
+        </div>
+        <div id="map">
+          <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.6508028487683!2d78.380425615035!3d17.38052818808274!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb942a2497f349%3A0x5c30ca8d2ffb8734!2sVasavi+College+of+Engineering!5e0!3m2!1sen!2sin!4v1550865807423" 
+          width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="darker-black container content-section text-center">
+      <div class="row" style="margin:5%"></div>
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          <h2>Acuthon - Edition I</h2>
+          <p>Feel free to get in touch with us.</p>
+          <div class="section" style="width:100%">
+              <div id="member">
+                  <div id="details">
+                      <h3>Abhijith Chandra Mergu</h3>
+                      <p><strong>Contact: </strong>96521 41465</p>
+                  </div>
+              </div>
+              <div id="member">
+                  <div id="details">
+                      <h3>Krushi Raj Tula</h3>
+                      <p><strong>Contact: </strong>81438 27431</p>
+                  </div>
+              </div>
+              <div id="member">
+                  <div id="details">
+                      <h3>Mahendra Pamidi</h3>
+                      <p><strong>Contact: </strong>97001 83746</p>
+                  </div>
+              </div>
+          </div>
+          <p>Mail us at <a href="mailto:acumen.it.vce+support@gmail.com">acumen.it.vce+support@gmail.com</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container text-center">
+        <p>Copyright &copy; ACUMEN IT 2019</p>
+      </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="{% static 'vendor/jquery/jquery.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCe7xQb1YWBLPDqFYAKE4G8_ysGyfuYyPg"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="{% static 'js/grayscale.js' %}"></script>
+    <script type="text/javascript">
+      var options = ["XR - AR/MR/VR","NGO APPLICATIONS","INTELLIGENT APPLICATIONS","WOMEN SAFETY","EDUTAINMENT","SMART CITY"]
+      $('#theme')[0].selectedIndex = options.indexOf("{{ team.theme }}")
+    </script>
+  </body>
+</html>

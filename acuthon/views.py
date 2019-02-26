@@ -41,7 +41,7 @@ def acuthon(request):
         except:
             pass
          
-    return render(request, 'scratch.html', context={
+    return render(request, 'homepage.html', context={
         'participant': participant,
         'user': user,
         'team': team,
