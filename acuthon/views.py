@@ -159,7 +159,7 @@ def team_create(request):
 def team_join(request):
     """
     POST:
-    Create team and add participants as CSV
+    Create team and add participants
     """
     if request.method == 'POST':
         try:
