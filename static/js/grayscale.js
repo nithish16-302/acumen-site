@@ -89,6 +89,9 @@ $('document').ready(function (){
             $('#message')[0].innerHTML = ('Team details have been updated.');
             $('#message')[0].style.color = "#0088ee";
         }
+        else if(searchParams[1] == "teamupdate=false"){
+            $('#message')[0].innerHTML = ('There was an error updating team details. Please check the email addresses of teammates.');
+        }
         else if(searchParams[1] == "teamcreate=true"){
             $('#message')[0].innerHTML = ('New team has been created successfully.');
             $('#message')[0].style.color = "#0088ee";

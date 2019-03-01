@@ -119,7 +119,7 @@ def team(request):
                 participant_obj.team = team
                 participant_obj.save()
             except:
-                continue
+                return redirect('/acuthon?redirect=true&teamupdate=false')
         return redirect('/acuthon?redirect=true&teamupdate=true')
 
 
