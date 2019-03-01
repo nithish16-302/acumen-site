@@ -203,8 +203,12 @@ def payment_response(request):
     An acknowledgment page for the user about the payment status.
     (May use the index page and show the status)
     '''
-    payment = Payment(user = request.user,payment_id =request.GET.get('payment_id'),
-    payment_status = request.GET.get('payment_status'),payment_request_id=request.GET.get('payment_request_id'))
+    payment = Payment(
+        user = request.user,
+        payment_id =request.GET.get('payment_id'),
+        payment_status = request.GET.get('payment_status'),
+        payment_request_id=request.GET.get('payment_request_id')
+    )
     payment.save()
     
     if request.GET.get('payment_status') == 'Credit':
@@ -230,8 +234,8 @@ def payment_request(request):
         send_email=True,
         email=request.user.email,
         phone=participant.contact,
-        redirect_url="http://localhost:8000/acuthon/payment_response",
-        webhook = "http://vceresults.pythonanywhere.com/check"
+        redirect_url="https://www.acumenit.in/acuthon/payment_response",
+        webhook = "http://www.acumenit.in/payment_webhook"
     )
 
     print(response['payment_request']['id'])
@@ -246,8 +250,12 @@ def payment_webhook(request):
     An acknowledgment page for the user about the payment status.
     (May use the index page and show the status)
     '''
-    payment = Payment(user = request.user,payment_id =request.GET.get('payment_id'),
-    payment_status = request.GET.get('payment_status'),payment_request_id=request.GET.get('payment_request_id'))
+    payment = Payment(
+        user = request.user,
+        payment_id =request.GET.get('payment_id'),
+        payment_status = request.GET.get('payment_status'),
+        payment_request_id=request.GET.get('payment_request_id')
+    )
     payment.save()
     
     if request.GET.get('payment_status') == 'Credit':
