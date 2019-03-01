@@ -210,6 +210,9 @@ def payment_response(request):
         payment_request_id=request.GET.get('payment_request_id')
     )
     payment.save()
+    participant = Participant.objects.get(user=request.user)
+    participant.payment = payment
+    participant.save()
 
     if request.GET.get('payment_status') == 'Credit':
         return redirect('/acuthon/?redirect=true&payment=true')
