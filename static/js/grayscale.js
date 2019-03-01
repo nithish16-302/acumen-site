@@ -111,11 +111,11 @@ $('document').ready(function (){
             $('#message')[0].style.color = "#0088ee";
         }
         else if(searchParams[1] == "payment=true"){
-            $('#message')[0].innerHTML = ('Your details have been updated.');
+            $('#message')[0].innerHTML = ('"Payment is successful! Payment status will be updated soon."');
             $('#message')[0].style.color = "#0088ee";
         }
         else if(searchParams[1] == "payment=false"){
-            $('#message')[0].innerHTML = ('Your details have been updated.');
+            $('#message')[0].innerHTML = ('Payment unsuccessful! If you have any queries please contact us.');
         }
         else if(searchParams[1] == "leave=false"){
             $('#message')[0].innerHTML = ('Couldn\'t leave team.');

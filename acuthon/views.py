@@ -203,20 +203,13 @@ def payment_response(request):
     An acknowledgment page for the user about the payment status.
     (May use the index page and show the status)
     '''
-    payment = Payment(
-        user = request.user,
-        payment_id =request.GET.get('payment_id'),
-        payment_status = request.GET.get('payment_status'),
-        payment_request_id=request.GET.get('payment_request_id')
-    )
-    payment.save()
     
     if request.GET.get('payment_status') == 'Credit':
-        return HttpResponse("Payment is successful!")
+        return redirect('/acuthon/?redirect=true&payment=true')
     elif request.GET.get('payment_status') == 'Failed':
-        return HttpResponse("Payment Failed!")
+        return redirect('/acuthon/?redirect=true&payment=false')
     else:
-        return HttpResponse("Wrong output!")
+        return redirect('/acuthon/?redirect=true&payment=false')
 
 
 def payment_request(request):
@@ -228,7 +221,7 @@ def payment_request(request):
     
     participant = Participant.objects.get(user=request.user)
     response = api.payment_request_create(
-        amount='150',
+        amount='180',
         purpose='Acument IT Hackathon',
         buyer_name = request.user.first_name,
         send_email=True,
@@ -252,18 +245,18 @@ def payment_webhook(request):
     '''
     payment = Payment(
         user = request.user,
-        payment_id =request.GET.get('payment_id'),
-        payment_status = request.GET.get('payment_status'),
-        payment_request_id=request.GET.get('payment_request_id')
+        payment_id =request.POST.get('payment_id'),
+        payment_status = request.POST.get('payment_status'),
+        payment_request_id=request.POST.get('payment_request_id')
     )
     payment.save()
     
-    if request.GET.get('payment_status') == 'Credit':
+    if request.POST.get('payment_status') == 'Credit':
         return redirect('/acuthon/?redirect=true&payment=true')
-    elif request.GET.get('payment_status') == 'Failed':
+    elif request.POST.get('payment_status') == 'Failed':
         return redirect('/acuthon/?redirect=true&payment=false')
     else:
-        return HttpResponse("Wrong output!")
+        return redirect('/acuthon/?redirect=true&payment=false')
 
 
         
