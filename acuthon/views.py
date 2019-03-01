@@ -203,7 +203,14 @@ def payment_response(request):
     An acknowledgment page for the user about the payment status.
     (May use the index page and show the status)
     '''
-    
+    payment = Payment(
+        user = request.user,
+        payment_id =request.GET.get('payment_id'),
+        payment_status = request.GET.get('payment_status'),
+        payment_request_id=request.GET.get('payment_request_id')
+    )
+    payment.save()
+
     if request.GET.get('payment_status') == 'Credit':
         return redirect('/acuthon/?redirect=true&payment=true')
     elif request.GET.get('payment_status') == 'Failed':
