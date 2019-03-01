@@ -228,7 +228,7 @@ def payment_request(request):
         email=request.user.email,
         phone=participant.contact,
         redirect_url="https://www.acumenit.in/acuthon/payment_response",
-        webhook = "http://www.acumenit.in/payment_webhook"
+        webhook = "http://www.acumenit.in/acuthon/payment_webhook"
     )
 
     print(response['payment_request']['id'])
