@@ -25,11 +25,17 @@ class Team(models.Model):
     project_link = models.CharField(max_length=1024, blank=True)
     theme = models.CharField(max_length=64, choices=THEME_CHOICES)
 
+    def __str__(self):
+        return ','.join([self.name])
+
 class Payment(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     payment_id = models.CharField(max_length=32)
     payment_status = models.CharField(max_length=30)
     payment_request_id = models.CharField(max_length=32)
+
+    def __str__(self):
+        return ','.join([self.user.email, self.payment_id])
 
 #participant-model
 class Participant(models.Model):
@@ -48,3 +54,6 @@ class Participant(models.Model):
     contact = models.CharField(max_length=15)
     payment = models.ForeignKey(Payment,on_delete=models.SET_NULL,null=True,blank=True)
     team = models.ForeignKey(Team,on_delete=models.SET_NULL,null=True,blank=True)
+
+    def __str__(self):
+        return ','.join([self.user.email, self.contact])
