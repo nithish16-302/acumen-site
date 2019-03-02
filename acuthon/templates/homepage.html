@@ -101,10 +101,13 @@
              <h2>VASAVI COLLEGE OF ENGINEERING</h2>
              <h3>Presents</h3>
               <h1 class="brand-heading">ACUTHON-2K19</h1>
-              <p class="intro-text">WE Make IT happen</p>
+              <p class="intro-text">WE Make IT happen
+              <br/>
               <a href="#about" class="btn btn-circle page-scroll">
                 <i class="fa fa-angle-double-down animated"></i>
               </a>
+              </p>
+              <br/>
             </div>
           </div>
         </div>
@@ -692,7 +695,7 @@
     <script src="{% static 'js/grayscale.js' %}"></script>
     <script type="text/javascript">
       var options = ["XR - AR/MR/VR","NGO APPLICATIONS","INTELLIGENT APPLICATIONS","WOMEN SAFETY","EDUTAINMENT","SMART CITY"]
-      if($('#theme')[0])$('#theme')[0].selectedIndex = options.indexOf("{{ team.theme }}" || 0)
+      if($('#theme')[0])$('#theme')[0].selectedIndex = options.indexOf("{{ team.theme }}" || "XR - AR/MR/VR")
     </script>
   </body>
 </html>
