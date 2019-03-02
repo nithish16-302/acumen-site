@@ -108,10 +108,10 @@ def team(request):
         team.project_link = form_data['project_link']
         team.save()
         participants = [
-            form_data['participant1'],
-            form_data['participant2'],
-            form_data['participant3'],
-            form_data['participant4']
+            form_data['participant1'].strip(),
+            form_data['participant2'].strip(),
+            form_data['participant3'].strip(),
+            form_data['participant4'].strip()
         ]
         for participant in participants:
             try:
