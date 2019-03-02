@@ -129,8 +129,10 @@
           <p><strong>Prizes: </strong>Exciting cash prizes <strong>worth 15k</strong> and goodies from technical communities.</p>
 
           
-          
+          {% if request.user.is_authenticated %}
+          {% else %}
           <p><a href="#modal-reg" data-toggle="modal">Have some good hacks? Register yourself!</a></p>
+          {% endif %}
           
 
         </div>
