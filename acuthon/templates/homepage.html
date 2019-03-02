@@ -453,7 +453,7 @@
               <h4 class="modal-title" id="myModalLabel">IAPPS Description</h4>
             </div>
             <div class="modal-body">
-              <p style="font-size:15px; padding:2px; margin:5px;">CONTENT ABOUT IAPPS</a> </p>
+              <p style="font-size:15px; padding:2px; margin:5px;">Applications which centralize intelligence like virtual assistants, agricultural  bots, health monitoring systems, etc </p>
             </div>
             <div class="modal-footer">
               </br>
@@ -462,15 +462,15 @@
         </div>
     </div>
   
-    <div class="modal fade" id="modal-iapps" tabindex="-1" role="dialog" >
+    <div class="modal fade" id="modal-ngo" tabindex="-1" role="dialog" >
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">IAPPS Description</h4>
+              <h4 class="modal-title" id="myModalLabel">NGO Applications Description</h4>
             </div>
             <div class="modal-body">
-              <p style="font-size:15px; padding:2px; margin:5px;">CONTENT ABOUT IAPPS</a> </p>
+              <p style="font-size:15px; padding:2px; margin:5px;">Many NGOs require software applications(web/mobile)  to handle and perform their operations. Eg: Kit management  system for Old aged people,  etc. </p>
             </div>
             <div class="modal-footer">
               </br>
@@ -479,15 +479,15 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modal-ngo" tabindex="-1" role="dialog" >
+    <div class="modal fade" id="modal-edutainment" tabindex="-1" role="dialog" >
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">IAPPS Description</h4>
+              <h4 class="modal-title" id="myModalLabel">Edutainment Description</h4>
             </div>
             <div class="modal-body">
-              <p style="font-size:15px; padding:2px; margin:5px;">CONTENT ABOUT IAPPS</a> </p>
+              <p style="font-size:15px; padding:2px; margin:5px;">Education with entertainment  to experience the joy of learning.Mobile/PC apps which focus on student quizzing, virtual learning, etc fall into this theme. </p>
             </div>
             <div class="modal-footer">
               </br>
@@ -501,10 +501,10 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">IAPPS Description</h4>
+              <h4 class="modal-title" id="myModalLabel">Startup Ideas Description</h4>
             </div>
             <div class="modal-body">
-              <p style="font-size:15px; padding:2px; margin:5px;">CONTENT ABOUT IAPPS</a> </p>
+              <p style="font-size:15px; padding:2px; margin:5px;">Have some disruptive ideas for problems that you come across daily. Then this is the place for you to pitch your ideas. </p>
             </div>
             <div class="modal-footer">
               </br>
@@ -518,10 +518,27 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">IAPPS Description</h4>
+              <h4 class="modal-title" id="myModalLabel">XR Description</h4>
             </div>
             <div class="modal-body">
-              <p style="font-size:15px; padding:2px; margin:5px;">CONTENT ABOUT IAPPS</a> </p>
+              <p style="font-size:15px; padding:2px; margin:5px;">Gaming applications like Pokemon Go, Call of duty, etc or applications with ground breaking ideas and functionality which involve the combination of different real and virtual environments. </p>
+            </div>
+            <div class="modal-footer">
+              </br>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-smartcity" tabindex="-1" role="dialog" >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Smart City Description</h4>
+            </div>
+            <div class="modal-body">
+              <p style="font-size:15px; padding:2px; margin:5px;">Modern problems require modern solutions so as smart cities require smart solutions. Come up with some ideas to make the cities samrter. </p>
             </div>
             <div class="modal-footer">
               </br>
@@ -538,45 +555,64 @@
             <h2 class="text-center">Themes</h2>
             <div class="section" style="width:100%">
                 <div id="member">
+                  <a data-dismiss="modal" data-toggle="modal" href="#modal-xr">
                     <div id="mem-img">
                         <img  src="{% static 'img/xr.png' %}" >
                     </div>
                     <div id="details">
                         <h3>XR - AR/VR/MR</h3>
                     </div>
+                  </a>
                 </div>
                 <div id="member">
+                  <a data-dismiss="modal" data-toggle="modal" href="#modal-ngo">
                     <div id="mem-img">
                         <img  src="{% static 'img/ngo.png' %}" >
                     </div>
                     <div id="details">
                         <h3>NGO Applications</h3>
                     </div>
+                  </a>
                 </div>
                 <div id="member">
+                  <a data-dismiss="modal" data-toggle="modal" href="#modal-iapps">
                     <div id="mem-img">
                         <img  src="{% static 'img/iapps.png' %}" >
                     </div>
                     <div id="details">
                         <h3>Intelligent Apps</h3>
                     </div>
-                </div>
+                  </a>
                 </div>
                 <div id="member">
+                  <a data-dismiss="modal" data-toggle="modal" href="#modal-smartcity">
                     <div id="mem-img">
                         <img  src="{% static 'img/smartcity.png' %}" >
                     </div>
                     <div id="details">
                         <h3>Smart City</h3>
                     </div>
+                  </a>
                 </div>
                 <div id="member">
+                  <a data-dismiss="modal" data-toggle="modal" href="#modal-startup">
                     <div id="mem-img">
                         <img  src="{% static 'img/startup.png' %}" >
                     </div>
                     <div id="details">
                         <h3>Startup Ideas</h3>
                     </div>
+                  </a>
+                </div>
+                <div id="member">
+                  <a data-dismiss="modal" data-toggle="modal" href="#modal-edutainment">
+                    <div id="mem-img">
+                        <img  src="{% static 'img/edutainment.png' %}" >
+                    </div>
+                    <div id="details">
+                        <h3>Edutainment</h3>
+                    </div>
+                  </a>
                 </div>
             </div>
           </div>
