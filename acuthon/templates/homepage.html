@@ -656,7 +656,7 @@
     <script src="{% static 'js/grayscale.js' %}"></script>
     <script type="text/javascript">
       var options = ["XR - AR/MR/VR","NGO APPLICATIONS","INTELLIGENT APPLICATIONS","WOMEN SAFETY","EDUTAINMENT","SMART CITY"]
-      if($('#theme')[0])$('#theme')[0].selectedIndex = options.indexOf("{{ team.theme }}")
+      if($('#theme')[0])$('#theme')[0].selectedIndex = options.indexOf("{{ team.theme }}" || 0)
     </script>
   </body>
 </html>
