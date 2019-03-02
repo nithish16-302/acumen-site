@@ -59,3 +59,4 @@ class Participant(models.Model):
 
     def __str__(self):
         return ','.join([self.user.email, self.contact])
+        
