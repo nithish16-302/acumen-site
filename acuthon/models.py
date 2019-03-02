@@ -10,6 +10,7 @@ class Team(models.Model):
     WOMEN_SAFETY = 'WOMEN SAFETY'
     EDUTAINMENT = 'EDUTAINMENT'
     IAPPS = 'INTELLIGENTS APPLICATIONS'
+    STARTUP_IDEAS = 'STARTUP IDEAS'
 
     THEME_CHOICES = (
                         (NGO_APPLICATIONS, 'NGO APPLICATIONS'), 
@@ -17,7 +18,8 @@ class Team(models.Model):
                         (SMART_CITY, 'SMART CITY'), 
                         (WOMEN_SAFETY, 'WOMEN SAFETY'), 
                         (EDUTAINMENT, 'EDUTAINMENT'), 
-                        (IAPPS, 'INTELLIGENTS APPLICATIONS')
+                        (IAPPS, 'INTELLIGENTS APPLICATIONS'),
+                        (STARTUP_IDEAS, 'STARTUP IDEAS'),
                     )
     
     name = models.CharField(max_length=128, unique=True)
