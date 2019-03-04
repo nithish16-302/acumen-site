@@ -290,8 +290,9 @@
               {% endif %}
             </div>
             <div class="col-lg-6 half-div">
+              <h4>Your Team details</h4>
+              {% if payment_status == 'Credit' %}
               {% if request.user.is_authenticated %}
-                <h4>Your Team details</h4>
                 {% if participant.team %}
                   <form action="/acuthon/team" method="post">
                     {% csrf_token %}
@@ -383,6 +384,9 @@
               {% else %}
                 <h4>Please login to view your Team details</h4>
                 <a data-dismiss="modal" class="btn btn-primary" href="{% if request.user.is_authenticated %}#modal-team{% else %}#modal-login{% endif %}" data-toggle="modal">Create Team</a>
+              {% endif %}
+              {% else %}
+              <p>Please complete your registration by paying the entry fee to create or Join a team</p>
               {% endif %}
             </div>
           </div>
