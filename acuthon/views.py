@@ -117,8 +117,9 @@ def team(request):
             try:
                 if participant!='':
                     participant_obj = Participant.objects.get(user__email=participant)
-                    participant_obj.team = team
-                    participant_obj.save()
+                    if participant_obj.payment:
+                        participant_obj.team = team
+                        participant_obj.save()
             except:
                 return redirect('/acuthon?redirect=true&teamupdate=false')
         return redirect('/acuthon?redirect=true&teamupdate=true')
