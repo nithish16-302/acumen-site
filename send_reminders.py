@@ -50,5 +50,6 @@ for participant in participants:
         participant.user.email, 
         msg.as_string()
     )
+    print('sent to {0} at {1}'.format(participant.user.first_name, participant.user.email))
 
 server.quit()
