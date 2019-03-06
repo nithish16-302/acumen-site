@@ -6,7 +6,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "acumen_site.settings")
 
 application = get_wsgi_application()
 
-#from acuthon.models import *
+from acuthon.models import *
 
 message = """
 Hello {0},
@@ -19,18 +19,9 @@ Website link: https://www.acumenit.in/acuthon
 """
 
 #participants = Participant.object.fileter(payment=None)
-class User:
-    def __init__(self):
-        self.first_name = 'Krushi Raj'
-        self.email = 'krushiraj123@gmail.com'
-    
 
 
-class Participant:
-    def __init__(self):
-        self.user = User()
-
-participants = [Participant()]
+participants = Participant.objects.filter(payment=None)
 
 import smtplib
 from email.mime.multipart import MIMEMultipart
@@ -59,18 +50,5 @@ for participant in participants:
         participant.user.email, 
         msg.as_string()
     )
-    # val = send_mail(
-    #         'Gentle reminder to complete your registration for Acuthon',
-    #         None,
-    #         'acuthon@acumenit.in',
-    #         recipient_list=[participant.user.email],
-    #         fail_silently=False,
-    #         auth_user='acuthon@acumenit.in',
-    #         auth_password='acumenIT@2K19',
-    #         connection=None,
-    #         html_message=message.format(participant.user.first_name)
-    # )
-
-    # print("Returned by send_mail" + str(val))
 
 server.quit()
