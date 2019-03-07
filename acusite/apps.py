@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class AcusiteConfig(AppConfig):
+class AcumenappConfig(AppConfig):
     name = 'acusite'

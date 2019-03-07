@@ -1,0 +1,170 @@
+    {% load static %}
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Nixie+One" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://demo.voidcoders.com/htmldemo/fitgear/main-files/assets/css/animate.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  <title>User Dashboard</title>
+    <link rel="stylesheet" href="{% static 'acusite/css/dashboardCss/style.css' %}">
+    <link rel="stylesheet" href="{% static 'acusite/css/HomeCsss/nav.css' %}">
+
+</head>
+
+<body>
+
+  <div class="waves"></div>
+  <div class="open-overlay">
+
+        <span class="bar-top"></span>
+        <span class="bar-middle"></span>
+        <span class="bar-bottom"></span>
+      </div>
+    <div class="overlay-navigation">
+      <nav role="navigation">
+        <ul>
+          <li><a class="h3" href="{% url 'home' %}" data-content="The beginning">Home</a></li>
+          <li><a class="h3" href="{% url 'events' %}" data-content="I got game">Events</a></li>
+          <li><a class="h3" href="{% url 'sponsers' %}" data-content="Only the finest">Sponsors</a></li>
+          <li><a class="h3" href="{% url 'team' %}" data-content="Don't hesitate">The Team</a></li>
+          <li><a class="h3" href="{% url 'gallery' %}" data-content="Memories!">Gallery</a></li>
+         {%if  user.is_authenticated %}
+            <li><a class="h3" href="{% url 'dashboard' %}" data-content="Curious?">Dashboard</a></li>
+             {% else %}
+             <li><a class="h3" href="{% url 'registration' %}" data-content="Curious?">Register/Sign in</a></li>
+            {% endif %}
+        </ul>
+      </nav>
+    </div>
+  <p class="heading">Welcome<!-- Username --> {{user.first_name}}!</p>
+<div class="row">
+    <div class="col col-lg-4 col-md-12 col-sm-12">
+      <div id="one">
+        <p class="text"> Registered Events:<br></p>
+            <p class="text">
+            {% for evreg in evreglist %}
+            {{evreg.event_name}} <a href="{% url 'eventdel' %}?event={{evreg.event_id}}" class="btn btn-dark del" >Delete</a>
+       <!--     <a href="{% url 'eventdel' %}?event={{evreg.event_id}}" class="btn btn-dark del" >Delete</a>-->
+
+            <a href="{% url 'payment_request' %}?event={{evreg.event_id}}&price={{evreg.event_cost}}" class="btn btn-dark del" >pay</a>
+            <br>
+    {% endfor %}
+        </p>
+        <p class="text">COST:Rs.{{pro.cost}}/-
+        <a href="{% url 'payment_request' %}?event=all&price={{pro.cost}}" class="btn btn-dark del" >pay all</a>
+        </p>
+    </div>
+
+    </div>
+   <center> <div class="col col-lg-4 col-md-12 col-sm-12">
+             {% get_static_prefix as STATIC_PREFIX %}
+       <p class="text">Qr:</p> <img src="{% static 'acusite/img/'%}{{pro.qr_code}}.png" height="150" width="150"/><br><br>
+          <a href="{% url 'logout' %}" >   <button style="margin-left: 15%; margin-top: 5%" type="button" id="signout11" class="btn btn-outline-secondary btn-lg " onclick=signout()>SignOut</button></a>
+
+    </div>
+   </center>
+    <div class="col col-lg-4 col-md-12 col-sm-12">
+       <p style="padding-right: 15%; padding-left: 15%" class="text"> Events Paid:</p>
+        <div id="one">
+            <p class="text">
+                {% for paid in paidlist %}
+            {{paid.event_name}}
+            <br>
+    {% endfor %}
+
+            </p>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col col-lg-6 col-md-6 col-sm-12 ">
+            {% if request.user.is_authenticated %}
+                <h4 class="text">Your details</h4>
+                <form role="form" action="{% url 'change' %}" method="POST" id="participantDetails">
+                    <div class="form-group">
+                    <label class="text" for="first_name">Name </label>
+                    <input class="form-control details-input" id="first_name" name="first_name" type="text" placeholder="Enter Name"
+                      value="{{user.first_name}}"/>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="text" for="email">Email ID </label>
+                    <input class="form-control details-input" name="email" type="email" placeholder="Enter Email" disabled
+                      value="{{user.email}}"/>
+                  </div>
+                    <div class="form-group">
+                      <p class="text" for="roll_number">roll Number </p>
+                      <input class="form-control details-input" name="roll_number" type="tel" placeholder="Enter roll number"
+                        value="{{pro.roll_number}}"/>
+                  </div>
+
+
+
+                  <div class="form-group">
+                      <label class="text" for="mobile_number">Phone Number </label>
+                      <input class="form-control details-input" name="phone_number" type="tel" placeholder="Enter Mobile Number"
+                        value="{{pro.phone_number}}"/>
+                  </div>
+
+                  <div class="form-group">
+                      <label class="text" for="college">College </label>
+                      <input class="form-control details-input" name="college" type="text" placeholder="Enter College Name"
+                        value="{{pro.college}}"/>
+                  </div>
+                     <div class="form-group">
+                      <label class="text" for="year">year </label>
+                      <input class="form-control details-input" name="year" type="text" placeholder="Enter year "
+                        value="{{pro.year}}"/>
+                  </div>
+                  <div class="form-group">
+                      <label class="text" for="branch">Branch </label>
+                       <select id="theme" class="form-control details-input" name="branch">
+                          <option value="IT">IT</option>
+                          <option value="EEE">EEE</option>
+                          <option value="ECE">ECE</option>
+                          <option value="CIVIL">CIVIL</option>
+                          <option value="CSE">CSE</option>
+                          <option value="MECH">MECH</option>
+                            <option value="CHEMICAL">CHEMICAL</option>
+                            <option value="EIE">EIE</option>
+                            <option value="TEXTILE">TEXTILE</option>
+                        </select>
+
+                  </div>
+                  <input class="btn btn-primary" form="participantDetails" type="submit" value="Save Details"/>
+                </form>
+                <br/>
+
+{%endif%}
+    </div>
+  </div>
+</div>
+
+
+
+
+      <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+     <script src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.ui.min.js'></script>
+
+      <script  src="{% static 'acusite/js/HomeJs/index.js' %}"></script>
+      <script  src="{% static 'acusite/js/dashboardJs/index.js' %}"></script>
+
+
+</body>
+
+</html>

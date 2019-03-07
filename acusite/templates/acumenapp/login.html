@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="google-signin-client_id" content="478143590214-afmbht08pbv1ioff2ea43pued1gvegim.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="{% static 'js/script.js'%}"></script>
+    <title>G-signin</title>
+    <style>
+    .g-signin2{
+      margin-left:85%;
+      margin-top:1%;
+    }
+    .data{
+      display: none;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <div class="data">
+
+      <div class="container">
+          <p>Profile details</p>
+      <img id="pic" class="img-circle" width="100" height="100" align="center"></img>
+  <form class="form-horizontal" method="POST" action="{% url 'dashboard' %}" >{% csrf_token %}
+      <div class="form-group">
+      <label class="control-label col-sm-2">EmailId:</label>
+      <div class="col-sm-4">
+        <input type="text" name="email" id="email" class="form-control"/>
+      </div>
+    </div>
+       <div class="form-group">
+      <label class="control-label col-sm-2">Name:</label>
+      <div class="col-sm-4">
+        <input type="text" name="userName" id="userName" class="form-control">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2">College:</label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" id="college" placeholder="Enter Full College name" name="college">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2">Roll no.:</label>
+      <div class="col-sm-4">
+        <input type="text" name="rollNo" class="form-control" id="rno" placeholder="Enter roll number" >
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" >Branch:</label>
+      <div class="col-sm-4">
+        <input type="text" id="branch" class="form-control" id="branch" placeholder="Enter Branch" name="branch">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2">Year</label>
+      <div class="col-sm-4">
+        <input type="text" id="year" class="form-control" id="year" placeholder="Enter Year" name="year">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2">Mobile number:</label>
+      <div class="col-sm-4">
+        <input type="text" name="mobileNo" class="form-control" id="mno" placeholder="Enter mobile number" >
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Submit</button>
+      </div>
+    </div>
+    <div class="col-md-12"><label id="message" class="control-label"></label></div>
+  </form>
+</div>
+      <button onclick="signOut()" class="btn btn-danger">SignOut</button>
+      </div>
+  </body>
+</html>

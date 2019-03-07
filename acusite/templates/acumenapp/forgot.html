@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+
+      <link rel="stylesheet" href="{% static 'css/RegisterCss/style.css' %}">
+      <link rel="stylesheet" href="{% static 'css/HomeCsss/nav.css'%}">
+    <title>Forgot Password</title>
+</head>
+<body>
+<a href="{%url 'home'%}"> <img class="mainlogo" src="{% static 'acusite/img/HomeImg/A.png' %}" height="50" width="50" onclick="reload()">
+   </a>
+<div class="open-overlay">
+        <span class="bar-top"></span>
+        <span class="bar-middle"></span>
+        <span class="bar-bottom"></span>
+      </div>
+    <div class="overlay-navigation">
+      <nav role="navigation">
+         <ul>
+          <li><a class="h3" href="{% url 'home' %}" data-content="The beginning">Home</a></li>
+          <li><a class="h3" href="{% url 'events' %}" data-content="I got game">Events</a></li>
+          <li><a class="h3" href="{% url 'sponsers' %}" data-content="Only the finest">Sponsors</a></li>
+          <li><a class="h3" href="{% url 'team' %}" data-content="Don't hesitate">The Team</a></li>
+          <li><a class="h3" href="{% url 'gallery' %}" data-content="Memories!">Gallery</a></li>
+            {%if  user.is_authenticated %}
+            <li><a class="h3" href="{% url 'dashboard' %}" data-content="Curious?">Dashboard</a></li>
+             {% else %}
+             <li><a class="h3" href="{% url 'registration' %}" data-content="Curious?">Register/Sign in</a></li>
+            {% endif %}
+        </ul>
+      </nav>
+    </div>
+<center>
+    <div class="container" id="otpdiv"><br>
+        <h2 style="color:white">Email Address to change password:</h2>
+            <input id="email" type="email" name="email" placeholder="Email ID"/><br><br>
+        <a href="#" id="otpbtn" class="btn btn-dark">OTP</a><br>
+    </div>
+    <div class="container" id="otptypediv" style="display:none"><br>
+        <h2 style="color:white">Enter OTP</h2>
+            <input id="otp" type="number" name="otp" placeholder="OTP"/><br><br>
+        <a href="#" id="otptypebtn" class="btn btn-dark">Submit</a><br><br>
+    </div>
+    <div class="container" id="divchangepwd" style="display:none">
+    <form action="{% url 'changepwd' %}" method="POST">{% csrf_token %}
+            <input type="email" name="emailid" id="emailid" style="" />
+            <input type="password" name="password" placeholder="Password" /><br><br>
+            <input type="password" name="password" placeholder="Confirm Password" /><br><br>
+                <button type="submit">Submit</button>
+    </form>
+
+
+    </div>
+</center>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js'></script>
+
+<script type="text/javascript">
+	$('#otpbtn').click(function() {
+    var email = $('#email').val();
+    document.getElementById("emailid").value = email;
+    console.log(email);
+    var url = 'http://localhost:8000/otpgenerator/';
+    var data = {'email': email};
+    console.log(data);
+    var success = function () {
+        console.log('yay');
+        alert("otp sent to " + email);
+        $('#otptypediv').show();
+    };
+
+    $.ajax({
+         type: "GET",
+         url: url,
+         data: data,
+         success: success
+    });
+});
+
+
+</script>
+<script type="text/javascript">
+    $('#otptypebtn').click(function() {
+    var otp = $('#otp').val();
+    var email = $('#email').val();
+    var url = 'http://localhost:8000/otpcomparator';
+    var data = {'otp': otp , 'email':email};
+    console.log(data);
+    var success = function () {
+        console.log('yay');
+        $('#divchangepwd').show();
+    };
+
+    $.ajax({
+         type: "GET",
+         url: url,
+         data: data,
+         success: success
+    });
+});
+</script>
+
+    <script  src="{% static 'js/RegisterJs/index.js' %}"></script>
+    <script  src="{% static 'js/HomeJs/index.js' %}"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.ui.min.js'></script>
+</body>
+</html>

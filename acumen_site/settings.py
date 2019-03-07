@@ -23,11 +23,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '#6fs_9cqc3$qlv+x(yd!^gtipmrcvk@sqc3kf68$u9q=*(y7w#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 TEST_VERSION = False
 
 ALLOWED_HOSTS = ['*']
-
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = 587
 
 # Application definition
 
@@ -81,7 +85,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-} if TEST_VERSION else {
+} 
+''''if TEST_VERSION else {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
         'NAME': 'acumenit$acumendb',
@@ -93,7 +98,7 @@ DATABASES = {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
         }
     }
-}
+}'''''
 
 
 # Password validation
