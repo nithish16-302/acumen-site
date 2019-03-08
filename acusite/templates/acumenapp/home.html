@@ -156,6 +156,8 @@
 
                               </div>
                               Vasavi College of Engineering <br>
+                    <br>
+                         <span class=" mainicon fa fa-angle-down downArrow"></span>
 
 
                             </div>
@@ -163,7 +165,8 @@
                 <div class="socialIcons">
                               <a class="fbIcon" href="https://www.facebook.com/ACUMENITFEST/" style="font-size: 0.9em;"><i class="fab fa-facebook-f"></i></a>
                               <a class="instIcon" href="https://www.instagram.com/acumen.it.vce/" style="margin-left: calc(2px + 1vw)"><i class="fab fa-instagram"></i></a>
-                            </div>
+
+                </div>
             </div>
 
             <div id="two" style="background-color: #23153c;" class="swiper-slide">
@@ -179,14 +182,13 @@
       </div>
 <div id="three" class="swiper-slide">
                <div class="titletheme">THEME</div>
-              <div class="theme"><span class="hide">What is AR?<br>
+              <div class="theme"><span>What is AR?<br>
 
-<p>Augmented reality is an interactive experience of a real-world environment where the objects that reside in the real-world are "augmented" by computer-generated perceptual information, sometimes across multiple sensory modalities, including visual, auditory, haptic, somatosensory, and olfactory.World is not the same with AR.
+Augmented reality is an interactive experience of a real-world environment where the objects that reside in the real-world are "augmented" by computer-generated perceptual information, sometimes across multiple sensory modalities, including visual, auditory, haptic, somatosensory, and olfactory.World is not the same with AR.
 
-
-Once IT arrives, Augmented Reality will be everywhere.</span>
+Once IT arrives, Augmented Reality will be everywhere.</span><br>
            <a href="{% url 'events' %}"><button class="svg">Events</button></a>
-           <a href="{% url 'map3d' %}"><button class="svg">3dmap</button></a>
+           <a href="{% url 'gallery' %}"><button class="svg">Gallery</button></a>
            </div>
 
 
@@ -250,7 +252,7 @@ Once IT arrives, Augmented Reality will be everywhere.</span>
           <li><a class="h3" href="{% url 'events' %}" data-content="I got game">Events</a></li>
           <li><a class="h3" href="{% url 'sponsers' %}" data-content="Only the finest">Sponsors</a></li>
           <li><a class="h3" href="{% url 'team' %}" data-content="Don't hesitate">The Team</a></li>
-          <li><a class="h3" href="{% url 'gallery' %}" data-content="Memories!">Gallery</a></li>
+          <li><a class="h3" href="{% url 'map3d' %}" data-content="Memories!">3D Map</a></li>
          {%if  user.is_authenticated %}
             <li><a class="h3" href="{% url 'dashboard' %}" data-content="Curious?">Dashboard</a></li>
              {% else %}

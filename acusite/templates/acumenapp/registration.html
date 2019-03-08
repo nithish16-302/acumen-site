@@ -51,10 +51,11 @@
   <div id="main"></div>
 
   <div id="loginform">
-      <form class="form-horizontal" method="POST" action="{% url 'login' %}" >{% csrf_token %}
+      <form class="form-horizontal" method="POST" action="{% url 'login' %}" >
+          {% csrf_token %}
     <h1>Login</h1>
     <input id="email" name ="email" type="email" placeholder="Email"/><br>
-    <input id="password" name="password" type="password" placeholder="Password"/><br>
+    <input id="loginpassword" name="loginpassword" type="password" placeholder="Password"/><br>
     <button>Login</button>
           <a href="{% url 'forgotpwd' %}" id="forgot">FORGOT PASSWORD?</a>
 
@@ -65,14 +66,16 @@
 
   <div id="signupform">
        <h1>Sign In</h1>
-       <form class="form-horizontal" method="POST" action="{% url 'register' %}" >{% csrf_token %}
-    <input type="text" name="username" placeholder="Full Name"/><br>
-    <input type="email" name="email" placeholder="Email ID"/><br>
-    <input type="password" name="password" placeholder="Password" /><br>
-    <input type="password" name="password" placeholder="Confirm Password" /><br>
-    <input type="mob" name="mobile" placeholder="Mobile Number" /><br>
-    <button type="submit">Sign Up</button>
-             </form>
+       <form class="form-horizontal" method="POST" action="{% url 'register' %}" onsubmit="return validated()">
+           {% csrf_token %}
+            <input type="text" id="username" name="username" placeholder="Full Name"/><br>
+            <input type="email" id="emailid" name="email" placeholder="Email ID"/><br>
+            <input type="password" id="password" name="password" placeholder="Password" /><br>
+            <input type="password" id="cnfpassword" name="cnfpassword" placeholder="Confirm Password" /><br>
+            <input type="mob" id="mobile" name="mobile" placeholder="Mobile Number" /><br>
+            <button type="submit">Sign Up</button>
+
+       </form>
   </div>
   <br>
   
@@ -94,10 +97,14 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js'></script>
 
 <script>
-   var url = '{{loggedin}}'
+   var url = '{{loggedin}}';
    console.log(url);
    if(url == 'False'){
     alert('Email or password incorrect..!')
+   }
+   var url2 = '{{registered}}';
+   if(url2 == 'False'){
+    alert('User Already Exists..!')
    }
 </script>
 
@@ -107,7 +114,21 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.ui.min.js'></script>
+<script type="text/javascript">
 
+function validated(){
+
+     var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("cnfpassword").value;
+        if (password != confirmPassword) {
+            alert("Passwords do not match.");
+            return false;
+        }
+        return true;
+
+}
+
+</script>
 
 
 </body>

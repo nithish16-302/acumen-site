@@ -90,7 +90,7 @@ button:focus {
 	font-size: 1.15em;
 	font-weight: normal;
 	line-height: 1;
-	margin: 0 0 0 1em;
+	margin-left: 3em;
 }
 
 /* Top Navigation Style */
@@ -409,6 +409,18 @@ button:focus {
 }
 
 /* Box button */
+.leftpin {
+	font-size: 2em;
+	display: block;
+	width: 2em;
+	height: 2em;
+	margin: 0;
+	padding: 0;
+	color: #fff;
+	border: 0;
+
+}
+
 .boxbutton {
 	font-size: 2em;
 	display: block;
@@ -514,7 +526,7 @@ button:focus {
 }
 
 .content__item-title {
-	font-size: 2.85em;
+	font-size: 1.5em;
 	margin: 0;
 	padding: 0 0 0.55em 0;
 	pointer-events: none;
@@ -565,7 +577,7 @@ button:focus {
 .content__meta {
 	text-align: center;
 	margin: 0;
-	font-size: 1.15em;
+	font-size: 0.9em;
 	line-height: 1.5;
 	color: black;
 }
@@ -889,6 +901,7 @@ button:focus {
 /* Pins for floor 3 */
 
 /* Pins for floor 4 */
+.pin--4-0 { top: 45vmin; left: 44vmin; }
 .pin--4-1 { top: 45vmin; left: 28vmin; }
 .pin--4-2 { top: 45vmin; left: 13vmin; }
 .pin--4-3 { top: 45vmin; left: 74vmin; }
@@ -924,6 +937,13 @@ button:focus {
 		display: block;
 		top: 0;
 		right: 0;
+		z-index: 1000;
+	}
+	.leftpin {
+		position: absolute;
+		display: block;
+		top: 0;
+		left: 0;
 		z-index: 1000;
 	}
 	.mallnav {

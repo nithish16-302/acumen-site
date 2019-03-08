@@ -17,11 +17,35 @@
   
       <link rel="stylesheet" href="{% static 'acusite/css/SponsersCss/style.css'%}">
     <link rel="stylesheet" href="{% static 'acusite/css/HomeCsss/style.css' %}">
+    <link rel="stylesheet" href="{% static 'acusite/css/HomeCsss/nav.css' %}">
 
   
 </head>
 
 <body>
+<a href="{%url 'home'%}"> <img class="mainlogo" src="{% static 'acusite/img/HomeImg/A.png' %}" height="50" width="50" onclick="reload()">
+   </a>
+<div class="open-overlay">
+        <span class="bar-top"></span>
+        <span class="bar-middle"></span>
+        <span class="bar-bottom"></span>
+      </div>
+    <div class="overlay-navigation">
+      <nav role="navigation">
+        <ul>
+         <li><a href="{% url 'home' %}" data-content="The beginning"><h3 style="font-size: 1.17em;">Home</h3></a></li>
+          <li><a href="{% url 'events' %}" data-content="I got game"><h3 style="font-size: 1.17em;">Events</h3></a></li>
+          <li><a href="{% url 'sponsers' %}" data-content="Only the finest"><h3 style="font-size: 1.17em;">Sponsors</h3></a></li>
+          <li><a href="{% url 'team' %}" data-content="Don't hesitate"><h3 style="font-size: 1.17em;">The Team</h3></a></li>
+          <li><a href="{% url 'gallery' %}" data-content="Memories!"><h3 style="font-size: 1.17em;">Gallery</h3></a></li>
+          {%if  user.is_authenticated %}
+            <li><a href="{% url 'dashboard' %}" data-content="Curious?"><h3 style="font-size: 1.17em;">Dashboard</h3></a></li>
+             {% else %}
+             <li><a href="{% url 'registration' %}" data-content="Curious?"><h3 style="font-size: 1.17em;">Register/Sign in</h3></a></li>
+            {% endif %}
+        </ul>
+      </nav>
+    </div>
 
   <div class="background">
   <span></span>
@@ -65,7 +89,6 @@
   <span></span>
   <span></span>
 </div>
-<a href="{%url 'home'%}"> <img class="mainlogo" src="{% static 'acusite/img/HomeImg/A.png' %}" height="50" width="50" onclick="reload()">
    </a>
    <section id="team" class="team-area">
         <div class="container">

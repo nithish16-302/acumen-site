@@ -73,29 +73,37 @@ def dashboard(request):
 def register(request):
     if request.method == 'POST':
         username = request.POST.get("username")
+        print(username)
         emailid = request.POST.get("email")
         password = request.POST.get('password')
         mobile_number = request.POST.get('mobile')
-        user = User.objects.create_user(username=emailid, email=emailid, password=password,first_name=username)
-        print(user)
-        user.is_staff = True
-        user.save()
-        qrcode =  emailid[:-10]
-        sample = pyq.create(qrcode)
-        sample.png('acusite/static/acusite/img/' + emailid[:-10] + '.png', scale=10)
-        mail_subject = 'Activate your AcumenIT account.'
-        message = 'Your Qr is:'
-        email = EmailMessage(
-            mail_subject, message, to=[emailid]
-        )
-        email.attach_file('acusite/static/acusite/img/' + emailid[:-10] + ".png")
-        email.send()
-        profile = Profile(user=user, phone_number=mobile_number, qr_code= emailid[:-10])
-        profile.save()
-        login(request, user)
-        return redirect(reverse("dashboard"))
+        #if username == '' or emailid== '' or password == '' or mobile_number == '':
+        #    return render(request, "acumenapp/registration.html", {"registered": False})
+        #else:
+        obj= User.objects.all()
+        if emailid in obj.username:
+            return render(request, "acumenapp/registration.html", {"registered": False})
+        else:
+            user = User.objects.create_user(username=emailid, email=emailid, password=password,first_name=username)
+            print(user)
+            user.is_staff = True
+            user.save()
+            qrcode =  emailid[:-10]
+            sample = pyq.create(qrcode)
+            sample.png('acusite/static/acusite/img/' + emailid[:-10] + '.png', scale=10)
+            mail_subject = 'Activate your AcumenIT account.'
+            message = 'Your Qr is:'
+            email = EmailMessage(
+                mail_subject, message, to=[emailid]
+            )
+            email.attach_file('acusite/static/acusite/img/' + emailid[:-10] + ".png")
+            email.send()
+            profile = Profile(user=user, phone_number=mobile_number, qr_code= emailid[:-10])
+            profile.save()
+            login(request, user)
+            return redirect(reverse("dashboard"))
         pass
-    pass
+
 
 #login Page
 def registration(request):
@@ -119,7 +127,7 @@ def login_view(request):
         # user = User.objects.create_user(**request.POST)
         #print(request.POST['email'],request.POST.get('password'))
         mail=request.POST.get('email')
-        pw=request.POST.get('password')
+        pw=request.POST.get('loginpassword')
         user = authenticate(username=mail, password=pw)
         print(user)
         if user is not None:
@@ -262,7 +270,7 @@ def payment_request(request):
         buyer_name=request.user.first_name,
         send_email=True,
         email=request.user.email,
-        redirect_url="https://www.acumenit.in/acuthon/",
+        redirect_url="https://www.acumenit.in/payment_response/"+str(eventid)+"/",
     )
 
     print(response['payment_request']['id'])
@@ -299,7 +307,7 @@ def payment_response(request,event):
             pro.cost=pro.cost - edetail.event_cost
             pro.save()
             evdetail = EventDetails.objects.filter(qr_code=pro , event_id=event)
-            evdetail.amount_paid=False
+            evdetail.amount_paid=True
             evdetail.save()
             payment.eventname = edetail.event_name
         payment.save()

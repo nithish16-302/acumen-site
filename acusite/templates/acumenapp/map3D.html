@@ -12,6 +12,7 @@
 		<link rel="shortcut icon" href="favicon.ico">
 		<link rel="stylesheet" type="text/css" href="{% static 'acusite/css/MapCss/3d-normalize.css' %}" />
 		<link rel="stylesheet" type="text/css" href="{% static 'acusite/css/MapCss/3d-style.css' %}" />
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 		<script src="{% static 'acusite/js/MapJs/3d-modernizr-custom.js'%}"></script>
 	</head>
 	<body>
@@ -51,10 +52,7 @@
 
 		<div class="container">
 			<div class="main">
-			<nav>
-				<a href="{%url 'home'%}"> <img class="mainlogo" src="{% static 'acusite/img/HomeImg/A.png' %}" height="50" width="50" onclick="reload()">
-   </a>
-			</nav>
+
 				<header class="codrops-header">
 					<h1>  Interactive Map - Acumen IT</h1>
 				</header>
@@ -259,6 +257,12 @@
 					<!-- /levels -->
 				</div>
 				<!-- /mall -->
+				<button onclick="goBack()" class="leftpin" aria-label="Show search"><i class="far fa-arrow-alt-circle-left"></i></button>
+				<script>
+					function goBack() {
+					  window.history.back();
+					}
+					</script>
 				<button class="boxbutton boxbutton--dark open-search" aria-label="Show search"><svg class="icon icon--search"><use xlink:href="#icon-search"></use></svg></button>
 				<nav class="mallnav mallnav--hidden">
 					<button class="boxbutton mallnav__button--up" aria-label="Go up"><svg class="icon icon--angle-down"><use xlink:href="#icon-angle-up"></use></svg></button>

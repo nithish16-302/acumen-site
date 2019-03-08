@@ -13,6 +13,7 @@ svg{
   margin: 2 auto;
 }
 
+
 path,polygon {
   stroke: #fff;
   fill:#fff;
@@ -88,6 +89,9 @@ a{
   height: 300px; /* Should be removed. Only for demonstration */
 }
 
+.iconhide{
+display:none;
+}
 iframe{
   width: 50vw;
   height:70vh;
@@ -353,6 +357,13 @@ button {
 
 @media screen and (min-width: 401px) and (max-width: 420px){
 
+.mainicon{
+display:none;
+}
+.iconhide{
+display:block;
+}
+
 svg{
   overflow: hidden;
   width: 65em;
@@ -360,7 +371,7 @@ svg{
   left:-90vw;
 }
 .socialIcons{
-    font-size:1.7em;
+    font-size:1.0em;
     position: fixed;
     right: 43%;
     bottom: 6%;
@@ -447,6 +458,13 @@ iframe{
 }
 
 @media screen and (min-width: 421px) and (max-width: 767px){
+.mainicon{
+display:none;
+}
+
+.iconhide{
+display:block;
+}
 
 svg{
   overflow: hidden;
@@ -455,7 +473,7 @@ svg{
   left:-85vw;
 }
 .socialIcons{
-    font-size:1.7em;
+    font-size:1.0em;
     position: fixed;
     right: 43%;
     bottom: 4%;
@@ -543,6 +561,13 @@ iframe{
 }
 
 @media screen and (min-width: 350px) and (max-width: 400px){
+.mainicon{
+display:none;
+}
+
+.iconhide{
+display:block;
+}
 
 svg{
   overflow: hidden;
@@ -551,7 +576,7 @@ svg{
   left:-105vw;
 }
 .socialIcons{
-     font-size:1.7em;
+     font-size:1.0em;
     position: fixed;
     right: 43%;
     bottom: 4%;
@@ -639,6 +664,13 @@ iframe{
 }
 
 @media screen and (max-width: 350px){
+.mainicon{
+display:none;
+}
+
+.iconhide{
+display:block;
+}
 
 svg{
   overflow: hidden;
