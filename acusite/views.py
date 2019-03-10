@@ -42,7 +42,7 @@ def events(request):
             print(i)
         return render(request,"acumenapp/events.html",{'evreglist':evreglist})
     else:
-        return redirect(reverse('registration'))
+        return render(request,"acumenapp/events.html")
 
 def map3d(request):
     return render(request,"acumenapp/map3D.html")
