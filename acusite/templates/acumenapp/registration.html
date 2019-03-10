@@ -11,12 +11,6 @@
 
       <link rel="stylesheet" href="{% static 'acusite/css/RegisterCss/style.css' %}">
       <link rel="stylesheet" href="{% static 'acusite/css/HomeCsss/nav.css'%}">
-  <style>
-    button, input{
-      disabled: true;
-    }
-  </style>
-  
 </head>
 
 <body>
@@ -119,7 +113,8 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.ui.min.js'></script>
 <script type="text/javascript">
-
+$('input').prop('disabled', true);
+$('button').prop('disabled', true);
 function validated(){
 
      var password = document.getElementById("password").value;
