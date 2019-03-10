@@ -27,20 +27,23 @@ def home(request):
 
 def events(request):
     if request.user.is_authenticated:
-        user = request.user
-        user1 = User.objects.get(username=user)
-        pro = Profile.objects.get(user=user1)
-        eedet = EventDetails.objects.filter(qr_code=pro)
-        evreglist=[]
-        for eventdet in eedet:
-            ev = Event.objects.get(event_id=eventdet.event_id)
-            if not eventdet.amount_paid:
-                evreglist.append(ev.event_id)
-                print(eventdet.amount_paid)
+        try:
+            user = request.user
+            user1 = User.objects.get(username=user)
+            pro = Profile.objects.get(user=user1)
+            eedet = EventDetails.objects.filter(qr_code=pro)
+            evreglist=[]
+            for eventdet in eedet:
+                ev = Event.objects.get(event_id=eventdet.event_id)
+                if not eventdet.amount_paid:
+                    evreglist.append(ev.event_id)
+                    print(eventdet.amount_paid)
 
-        for i in evreglist:
-            print(i)
-        return render(request,"acumenapp/events.html",{'evreglist':evreglist})
+            for i in evreglist:
+                print(i)
+            return render(request,"acumenapp/events.html",{'evreglist':evreglist})
+        except:
+            return render(request,"acumenapp/events.html")
     else:
         return render(request,"acumenapp/events.html")
 
