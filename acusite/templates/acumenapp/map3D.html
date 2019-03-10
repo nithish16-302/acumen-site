@@ -1,22 +1,18 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 	<head>
+    	<link rel="shortcut icon" href="{% static 'acusite/img/HomeImg/A.png'%}" type="image/x-icon">
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Interactive Map | ACUMEN IT</title>
-		<meta name="description" content="An interactive 3D mall map concept with a search and pin indicators for every level. " />
 		<meta name="keywords" content="mall map, 3d, css, javascript, pin, levels, floor map" />
-		<meta name="author" content="Codrops" />
-		<link rel="shortcut icon" href="favicon.ico">
-		<link rel="stylesheet" type="text/css" href="{% static 'acusite/css/MapCss/3d-normalize.css' %}" />
-		<link rel="stylesheet" type="text/css" href="{% static 'acusite/css/MapCss/3d-style.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'acusite/css/map3dHome/3d-normalize.css'%}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'acusite/css/map3dHome/3d-style.css'%}" />
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-		<script src="{% static 'acusite/js/MapJs/3d-modernizr-custom.js'%}"></script>
+		<script src="js/3d-modernizr-custom.js"></script>
 	</head>
 	<body>
-
 		<svg class="hidden">
 			<defs>
 				<symbol id="icon-pin" viewBox="0 0 200 300">
@@ -49,16 +45,14 @@
                 </symbol>
 			</defs>
 		</svg>
-
 		<div class="container">
 			<div class="main">
-
 				<header class="codrops-header">
-					<h1>  Interactive Map - Acumen IT</h1>
+					<h1>Interactive Map - Acumen IT</h1>
 				</header>
 				<div class="mall">
 					<div class="surroundings">
-						<img class="surroundings__map" src="{% static 'acusite/img/MapImg/surroundings.svg' %}" alt="Surroundings"/>
+						<img class="surroundings__map" src="img/surroundings.svg" alt="Surroundings"/>
 					</div>
 					<div class="levels">
 						<div class="level level--1" aria-label="Level 1">
@@ -202,6 +196,12 @@
                                 <rect x="394.5" y="10.5" class="map__space" width="149.8" height="246.5"/>
                             </svg>
 							<div class="level__pins">
+								<a class="pin pin--4-0" data-category="2" data-space="4.00" href="#" aria-label="Pin for ">
+									<span class="pin__icon">
+										<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
+										<svg class="icon icon--logo icon--circle"><use xlink:href="#icon-circle"></use></svg>
+									</span>
+								</a>
 								<a class="pin pin--4-1" data-category="2" data-space="4.01" href="#" aria-label="Pin for Criminal Case">
 									<span class="pin__icon">
 										<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
@@ -259,10 +259,10 @@
 				<!-- /mall -->
 				<button onclick="goBack()" class="leftpin" aria-label="Show search"><i class="far fa-arrow-alt-circle-left"></i></button>
 				<script>
-					function goBack() {
-					  window.history.back();
-					}
-					</script>
+function goBack() {
+  window.history.back();
+}
+</script>
 				<button class="boxbutton boxbutton--dark open-search" aria-label="Show search"><svg class="icon icon--search"><use xlink:href="#icon-search"></use></svg></button>
 				<nav class="mallnav mallnav--hidden">
 					<button class="boxbutton mallnav__button--up" aria-label="Go up"><svg class="icon icon--angle-down"><use xlink:href="#icon-angle-up"></use></svg></button>
@@ -283,22 +283,23 @@
 						</div>
 					</div>
 					<div class="content__item" data-space="1.02" data-category="1">
-						<h3 class="content__item-title">Knock off Tournament</h3>
+						<h3 class="content__item-title">Code Chain</h3>
 						<div class="content__item-details">
 							<p class="content__meta">
-								<span class="content__meta-item"><strong>Room Num:</strong> It-Lab-1</span> 
-								<span class="content__meta-item"><strong>Phone:</strong> 9052536501, 9705709704</span>
-								<span class="content__meta-item"></span>
+								<span class="content__meta-item"><strong>Room no:</strong> IT Lab 1</span><br>
+								<span class="content__meta-item"><strong>Co-ordinators </strong>Vishal:8897729789, Koushik:8142713552</span><br>
+								<span class="content__meta-item"><button style=" border: none;padding: 7px 20px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;background-color:#d7d7dc;color: black;border: 2px solid #555555; pointer-events: none;">Register</button></span>
 							</p>
 							
 						</div>
 					</div>
 					<div class="content__item" data-space="1.03" data-category="1">
-						<h3 class="content__item-title">Dextra</h3>
+						<h3 class="content__item-title">You Guess You Find You Rule</h3>
 						<div class="content__item-details">
 							<p class="content__meta">
-								<span class="content__meta-item"><strong>Room Num:</strong> IT LAB-II</span> 
-								<span class="content__meta-item"><strong>Phone:</strong> 8686408175, 9558266821, 7032230769</span>
+								<span class="content__meta-item"><strong>Room no:</strong> IT Lab 2</span><br>
+								<span class="content__meta-item"><strong>Co-ordinators </strong>Akhila:9912660479, Rachana:9121450012</span><br>
+								<span class="content__meta-item"><button style=" border: none;padding: 7px 20px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;background-color:#d7d7dc;color: black;border: 2px solid #555555; pointer-events: none;">Register</button></span>
 							</p>
 							
 						</div>
@@ -343,85 +344,104 @@
 						
 						</div>
 					</div>
-					<div class="content__item" data-space="4.01" data-category="2">
-						<h3 class="content__item-title">Criminal Case</h3>
+					<div class="content__item" data-space="4.00" data-category="2">
+						<h3 class="content__item-title">Mortal Combat</h3>
 						<div class="content__item-details">
 							<p class="content__meta">
-								<span class="content__meta-item"><strong>Room no:</strong> R-302</span> 
-								<span class="content__meta-item"><strong>Phone:</strong> 9640535034, 9010914571</span>
+								<span class="content__meta-item"><strong>Room no:</strong> R-301</span><br> 
+								<span class="content__meta-item"><strong>Co-ordinators: </strong>Vinay Desiraju:9177375897, O.Gurudev:9381348967</span><br>
+								<span class="content__meta-item"><button style=" border: none;padding: 7px 20px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;background-color:#d7d7dc;color: black;border: 2px solid #555555; pointer-events: none;">Register</button></span>
+								
+							</p>
+							
+						</div>
+					</div>
+					<div class="content__item" data-space="4.01" data-category="2">
+						<h3 class="content__item-title">Head Start</h3>
+						<div class="content__item-details">
+							<p class="content__meta">
+								<span class="content__meta-item"><strong>Room no:</strong> R-302</span><br> 
+								<span class="content__meta-item"><strong>Co-ordinators: </strong>Akash:8919693268, Naresh:9550933728</span><br>
+								<span class="content__meta-item"><button style=" border: none;padding: 7px 20px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;background-color:#d7d7dc;color: black;border: 2px solid #555555; pointer-events: none;">Register</button></span>
+								
 							</p>
 							
 						</div>
 					</div>
 					<div class="content__item" data-space="4.02" data-category="2">
-						<h3 class="content__item-title">Cryptothon</h3>
+						<h3 class="content__item-title">Kairotic King</h3>
 						<div class="content__item-details">
 							<p class="content__meta">
-								<span class="content__meta-item"><strong>Room no:</strong> 303</span> 
-								<span class="content__meta-item"><strong>Phone:</strong> 9701540521, 8919800370, 8897090066</span>
+								<span class="content__meta-item"><strong>Room no:</strong> 303</span><br>
+								<span class="content__meta-item"><strong>Co-ordinators </strong>A.Varsha:7702398505, G.Sandhya Reddy:9666844344</span><br>
+								<span class="content__meta-item"><button style=" border: none;padding: 7px 20px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;background-color:#d7d7dc;color: black;border: 2px solid #555555; pointer-events: none;">Register</button></span>
 							</p>
+							
 							
 							
 						</div>
 					</div>
 					<div class="content__item" data-space="4.03" data-category="2">
-						<h3 class="content__item-title">Deal or No Deal</h3>
+						<h3 class="content__item-title">Cognitia</h3>
 						<div class="content__item-details">
 							<p class="content__meta">
-								<span class="content__meta-item"><strong>Room No:</strong> R-307</span> 
-								<span class="content__meta-item"><strong>Phone:</strong> 8977912697, 9848511860, 8897170785</span>
+								<span class="content__meta-item"><strong>Room no:</strong> 307</span> <br>
+								<span class="content__meta-item"><strong>Co-ordinators </strong>Kunal:6302336734, Akshitha:9396223322</span><br>
+								<span class="content__meta-item"><button style=" border: none;padding: 7px 20px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;background-color:#d7d7dc;color: black;border: 2px solid #555555; pointer-events: none;">Register</button></span>
 							</p>
 							
 						</div>
 					</div>
 					<div class="content__item" data-space="4.04" data-category="2">
-						<h3 class="content__item-title">Anwesha</h3>
+						<h3 class="content__item-title">Reorient</h3>
 						<div class="content__item-details">
 							<p class="content__meta">
-								<span class="content__meta-item"><strong>Room No:</strong> R-308</span> 
-								<br>
-								<span class="content__meta-item"><strong>Phone:</strong> 9912623679, 8008588602 </span>
-								<br>
-								<span class="content__meta-item"><strong>Co-ordinators:</strong> Abcdefgh, Ijklmnopy</span>
+								<span class="content__meta-item"><strong>Room no:</strong> 308</span><br>
+								<span class="content__meta-item"><strong>Co-ordinators </strong>Mehraj Sultana:8143903130, Revanth Naidu G:8464070457</span><br>
+								<span class="content__meta-item"><button style=" border: none;padding: 7px 20px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;background-color:#d7d7dc;color: black;border: 2px solid #555555; pointer-events: none;">Register</button></span>
 							</p>
 							
 						</div>
 					</div>
 					<div class="content__item" data-space="4.05" data-category="2">
-						<h3 class="content__item-title">TechTrix</h3>
+						<h3 class="content__item-title">Sense with Common Sense</h3>
 						<div class="content__item-details">
 							<p class="content__meta">
-								<span class="content__meta-item"><strong>Room No:</strong> R-309</span> 
-								<span class="content__meta-item"><strong>Phone:</strong> 9100710305, 8328501553, 9573177082</span>
+								<span class="content__meta-item"><strong>Room no:</strong> 309</span><br>
+								<span class="content__meta-item"><strong>Co-ordinators </strong>Suraj:7207464619, Anusha:8074671017</span><br>
+								<span class="content__meta-item"><button style=" border: none;padding: 7px 20px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;background-color:#d7d7dc;color: black;border: 2px solid #555555; pointer-events: none;">Register</button></span>
 							</p>
 							</div>
 					</div>
 					<div class="content__item" data-space="4.06" data-category="2">
-						<h3 class="content__item-title">AL 'PATCH' INO</h3>
+						<h3 class="content__item-title">Hogwarts Mystery</h3>
 						<div class="content__item-details">
 							<p class="content__meta">
-								<span class="content__meta-item"><strong>Room No:</strong> R-306</span> 
-								<span class="content__meta-item"><strong>Phone:</strong> 8008433479, 9515734227, 9542707797</span>
+								<span class="content__meta-item"><strong>Room no:</strong> 306</span><br>
+								<span class="content__meta-item"><strong>Co-ordinators </strong>Varun. G:8328237616, Vishwasa.P:7989840118</span><br>
+								<span class="content__meta-item"><button style=" border: none;padding: 7px 20px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;background-color:#d7d7dc;color: black;border: 2px solid #555555; pointer-events: none;">Register</button></span>
 							</p>
 	
 						</div>
 					</div>
 					<div class="content__item" data-space="4.07" data-category="2">
-						<h3 class="content__item-title">A walk in the dark</h3>
+						<h3 class="content__item-title">U Can't Escape</h3>
 						<div class="content__item-details">
 							<p class="content__meta">
-								<span class="content__meta-item"><strong>Room no:</strong> R-305</span> 
-								<span class="content__meta-item"><strong>Phone:</strong> 9705830425, 9492639705, 8121560204</span>
+								<span class="content__meta-item"><strong>Room no:</strong> 305</span><br>
+								<span class="content__meta-item"><strong>Co-ordinators </strong>Manoj Kumar:9701351428, Manideep:8919736903</span><br>
+								<span class="content__meta-item"><button style=" border: none;padding: 7px 20px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;background-color:#d7d7dc;color: black;border: 2px solid #555555; pointer-events: none;">Register</button></span>
 							</p>
 	
 						</div>
 					</div>
 					<div class="content__item" data-space="4.08" data-category="2">
-						<h3 class="content__item-title">Aeroplane Chess</h3>
+						<h3 class="content__item-title">PUBG Quest</h3>
 						<div class="content__item-details">
 							<p class="content__meta">
-								<span class="content__meta-item"><strong>Room no:</strong> R-304</span> 
-								<span class="content__meta-item"><strong>Phone:</strong> 9866345703, 7095904848, 801990224 </span>
+								<span class="content__meta-item"><strong>Room no:</strong> 304</span><br>
+								<span class="content__meta-item"><strong>Co-ordinators </strong>Srikar:8790811946, Akhil:9010914571</span><br>
+								<span class="content__meta-item"><button style=" border: none;padding: 7px 20px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;background-color:#d7d7dc;color: black;border: 2px solid #555555; pointer-events: none;">Register</button></span>
 							</p>
 	
 						</div>
@@ -444,29 +464,27 @@
 					<li class="list__item" data-level="1" data-category="3" data-space="1.04"><a href="#" class="list__link">Paper Presentation</a></li>
 					<li class="list__item" data-level="2" data-category="3" data-space="2.02"><a href="#" class="list__link">Poster presentation</a></li>
 
-					<li class="list__item" data-level="2" data-category="1" data-space="2.01"><a href="#" class="list__link">Hackathon</a></li>
-					<li class="list__item" data-level="2" data-category="1" data-space="2.03"><a href="#" class="list__link">Challengica</a></li>	
-					<li class="list__item" data-level="1" data-category="1" data-space="1.01"><a href="#" class="list__link">Beycode</a></li>
-					<li class="list__item" data-level="1" data-category="1" data-space="1.02"><a href="#" class="list__link">Knock-Off Tournament</a></li>
-					<li class="list__item" data-level="1" data-category="1" data-space="1.03"><a href="#" class="list__link">Dextra</a></li>
-
-					<li class="list__item" data-level="4" data-category="2" data-space="4.01"><a href="#" class="list__link">Criminal Case</a></li>
-					<li class="list__item" data-level="4" data-category="2" data-space="4.02"><a href="#" class="list__link">Cryptothon</a></li>
-					<li class="list__item" data-level="4" data-category="2" data-space="4.03"><a href="#" class="list__link">Deal or NO deal</a></li>
-					<li class="list__item" data-level="4" data-category="2" data-space="4.04"><a href="#" class="list__link">Anwesha</a></li>
-					<li class="list__item" data-level="4" data-category="2" data-space="4.05"><a href="#" class="list__link">TechTrix</a></li>
-					<li class="list__item" data-level="4" data-category="2" data-space="4.06"><a href="#" class="list__link">AL 'PATCH' INO</a></li>
-					<li class="list__item" data-level="4" data-category="2" data-space="4.07"><a href="#" class="list__link">A walk in the dark</a></li>
-					<li class="list__item" data-level="4" data-category="2" data-space="4.08"><a href="#" class="list__link">Aeroplane Chess</a></li>
+					<li class="list__item" data-level="1" data-category="1" data-space="1.02"><a href="#" class="list__link">Code Chain</a></li>
+					<li class="list__item" data-level="1" data-category="1" data-space="1.03"><a href="#" class="list__link">You Guess You Find You Rule</a></li>	
+					
+                    <li class="list__item" data-level="4" data-category="2" data-space="4.00"><a href="#" class="list__link">Mortal Combat</a></li>
+					<li class="list__item" data-level="4" data-category="2" data-space="4.01"><a href="#" class="list__link">Head Start</a></li>
+					<li class="list__item" data-level="4" data-category="2" data-space="4.02"><a href="#" class="list__link">Kairotic King</a></li>
+					<li class="list__item" data-level="4" data-category="2" data-space="4.03"><a href="#" class="list__link">Cognitia</a></li>
+					<li class="list__item" data-level="4" data-category="2" data-space="4.04"><a href="#" class="list__link">Reorient</a></li>
+					<li class="list__item" data-level="4" data-category="2" data-space="4.05"><a href="#" class="list__link">Sense With Common Sense</a></li>
+					<li class="list__item" data-level="4" data-category="2" data-space="4.06"><a href="#" class="list__link">Hogwarts Mystery</a></li>
+					<li class="list__item" data-level="4" data-category="2" data-space="4.07"><a href="#" class="list__link">U Can't Escape</a></li>
+					<li class="list__item" data-level="4" data-category="2" data-space="4.08"><a href="#" class="list__link">PUBQ Quest</a></li>
 				</ul>
 			</aside>
 			<!-- /spaces-list -->
 		</div>
 		<!-- /container -->
-		<script src="{% static 'acusite/js/MapJs/3d-classie.js' %}"></script>
-		<script src="{% static 'acusite/js/MapJs/3d-list.min.js' %}"></script>
-		<script src="{% static 'acusite/js/MapJs/3d-main.js' %}"></script>
-		<script type="text/javascript" src="//code.jquery.com/jquery-1.9.1.js"></script>
+		<script src="{% static 'acusite/js/MapJs/3d-classie.js'%}"></script>
+		<script src="{% static 'acusite/js/MapJs/3d-list.min.js'%}"></script>
+		<script src="{% static 'acusite/js/MapJs/3d-main.js'%}"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.js"></script>
 		<script type="text/javascript">
               $(function(){
               	 	var dict = {

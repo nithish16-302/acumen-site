@@ -1,19 +1,16 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 	<head>
+    	<link rel="shortcut icon" href="{% static 'acusite/img/HomeImg/A.png'%}" type="image/x-icon">
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Interactive Map | ACUMEN IT</title>
-		<meta name="description" content="An interactive 3D mall map concept with a search and pin indicators for every level. " />
 		<meta name="keywords" content="mall map, 3d, css, javascript, pin, levels, floor map" />
-		<meta name="author" content="Codrops" />
-		<link rel="shortcut icon" href="favicon.ico">
 		<link rel="stylesheet" type="text/css" href="{% static 'acusite/css/map3dHome/3d-normalize.css'%}" />
 		<link rel="stylesheet" type="text/css" href="{% static 'acusite/css/map3dHome/3d-style.css'%}" />
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-		<script src="{% static 'acusite/js/map3dJs/3d-modernizr-custom.js'%}"></script>
+		<script src="js/3d-modernizr-custom.js"></script>
 	</head>
 	<body>
 		<svg class="hidden">
@@ -55,7 +52,7 @@
 				</header>
 				<div class="mall">
 					<div class="surroundings">
-						<img class="surroundings__map" src="{% static 'acusite/img/map3dImg/surroundings.svg'%}" alt="Surroundings"/>
+						<img class="surroundings__map" src="img/surroundings.svg" alt="Surroundings"/>
 					</div>
 					<div class="levels">
 						<div class="level level--1" aria-label="Level 1">
@@ -260,7 +257,13 @@
 					<!-- /levels -->
 				</div>
 				<!-- /mall -->
-		
+				<button onclick="goBack()" class="leftpin" aria-label="Show search"><i class="far fa-arrow-alt-circle-left"></i></button>
+				<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+				<button class="boxbutton boxbutton--dark open-search" aria-label="Show search"><svg class="icon icon--search"><use xlink:href="#icon-search"></use></svg></button>
 				<nav class="mallnav mallnav--hidden">
 					<button class="boxbutton mallnav__button--up" aria-label="Go up"><svg class="icon icon--angle-down"><use xlink:href="#icon-angle-up"></use></svg></button>
 					<button class="boxbutton boxbutton--dark mallnav__button--all-levels" value="Building" aria-label="Back to all levels"><svg class="icon icon--stack"><use xlink:href="#icon-stack"></use></svg>
@@ -285,7 +288,7 @@
 							<p class="content__meta">
 								<span class="content__meta-item"><strong>Room no:</strong> IT Lab 1</span><br>
 								<span class="content__meta-item"><strong>Co-ordinators </strong>Vishal:8897729789, Koushik:8142713552</span><br>
-								<span class="content__meta-item"><button style=" border: none;padding: 7px 20px;text-align: center;text-decoration: none;display: inline-block;font-size: 12px;margin: 4px 2px;cursor: pointer;background-color:#d7d7dc;color: black;border: 2px solid #555555; pointer-events: none;">Register</button></span>
+								<span class="content__meta-item"><button style=" border: none;padding: 7px 20px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;background-color:#d7d7dc;color: black;border: 2px solid #555555; pointer-events: none;">Register</button></span>
 							</p>
 							
 						</div>
@@ -347,7 +350,7 @@
 							<p class="content__meta">
 								<span class="content__meta-item"><strong>Room no:</strong> R-301</span><br> 
 								<span class="content__meta-item"><strong>Co-ordinators: </strong>Vinay Desiraju:9177375897, O.Gurudev:9381348967</span><br>
-								<span class="content__meta-item"><button style=" border: none;padding: 17px 20px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;background-color:#d7d7dc;color: black;border: 2px solid #555555; pointer-events: none;">Register</button></span>
+								<span class="content__meta-item"><button style=" border: none;padding: 7px 20px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;background-color:#d7d7dc;color: black;border: 2px solid #555555; pointer-events: none;">Register</button></span>
 								
 							</p>
 							
