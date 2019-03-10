@@ -199,7 +199,7 @@ Once IT arrives, Augmented Reality will be everywhere.</span><br>
                      <div class="mapouter">
                     <div class="heading1" style="color:#ededed; padding-left: 5px; text-align:center;">3D MAP</div>
                 <div class="gmap_canvas">
-                    <iframe id="gmap_canvas" src="{% url 'map3dHome'%} " frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.pureblack.de"></a>
+                    <iframe id="gmap_canvas" src="{% url 'map3dHome'%}" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.pureblack.de"></a>
                 </div>
             </div>
             </div>
@@ -253,7 +253,7 @@ Once IT arrives, Augmented Reality will be everywhere.</span><br>
           <li><a class="h3" href="{% url 'sponsers' %}" data-content="Only the finest">Sponsors</a></li>
           <li><a class="h3" href="{% url 'team' %}" data-content="Don't hesitate">The Team</a></li>
           <li><a class="h3" href="{% url 'map3d' %}" data-content="Memories!">3D Map</a></li>
-         {%if  user.is_authenticated %}
+            {% if  user.is_authenticated %}
             <li><a class="h3" href="{% url 'dashboard' %}" data-content="Curious?">Dashboard</a></li>
              {% else %}
              <li><a class="h3" href="{% url 'registration' %}" data-content="Curious?">Register/Sign in</a></li>

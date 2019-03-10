@@ -111,6 +111,7 @@ def registration(request):
 
 def sponsers(request):
     return render(request,"acumenapp/sponsers.html")
+    
 def map3dHome(request):
     return render(request,"acumenapp/map3dHome.html")
 
