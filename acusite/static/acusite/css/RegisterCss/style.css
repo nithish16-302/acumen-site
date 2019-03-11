@@ -19,13 +19,13 @@ body{
   background-color: #173F5F;
   border-radius: 5px;
   position: absolute;
-  top:50%;
+  top:65%;
   left: 50%;
   transform: translate(-50%,-50%);
 }
 
 #main{
-  height: 400px;
+  height: 500px;
   width: 450px;
   background-color: white;
   border-radius: 5px;

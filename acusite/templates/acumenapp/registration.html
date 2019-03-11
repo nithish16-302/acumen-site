@@ -39,7 +39,16 @@
       </nav>
     </div>
   <!-- Button trigger modal -->
-
+   <div style="padding-top:50px;">
+<h4 style=" color:white; font-family:Arial; font-size:0.8em;">Important Note</h4>
+	<p class="imp" style=" color:white; font-size:0.7em; font-family:Arial;">
+		1)You can pay online after registering through instamojo,<br> for that just click on pay button in your dashboard<br>
+		2)There will be nominal convenience fee of 2% + Rs 3 for each payment ie.gateway charges by instamojo<br>
+		3)You can pay using Wallets, UPI, Debit and Credit cards, NEFT<br>
+		4)Please do not hit refresh or back on payment pages<br>
+		5)It will take a little time to update the payment in dashboard after the payment is done, meanwhile you'll get a email or sms confirmation from instamojo.
+	</p>
+   </div>
 <!-- Modal -->
 <div class="main">
   <div class="modal-dialog" role="document">
@@ -63,7 +72,8 @@
 
 
 
-  <div id="signupform">
+   <div id="signupform">
+
        <h1>Sign In</h1>
        <form class="form-horizontal" method="POST" action="{% url 'register' %}" onsubmit="return validated()">
            {% csrf_token %}
@@ -73,7 +83,7 @@
             <input type="password" id="cnfpassword" name="cnfpassword" placeholder="Confirm Password" /><br>
             <input type="mob" id="mobile" name="mobile" placeholder="Mobile Number" /><br>
             <button type="submit">Sign Up</button>
-
+           <p style="color:red; font-size:15px;">Acuthon users need not register again.<br>Please use those credentials itself.</p>
        </form>
   </div>
   <br>
