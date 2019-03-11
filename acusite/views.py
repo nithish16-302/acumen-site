@@ -60,6 +60,8 @@ def dashboard(request):
         evregdet = []
         evreglist = []
         paidlist=[]
+        if (len(evregdet)+1)%3 == 0:
+            pro.cost = (len(evregdet)%3)*100
         for eventdet in ee:
             evregdet.append(eventdet)
             ev = Event.objects.get(event_id=eventdet.event_id)
@@ -68,8 +70,11 @@ def dashboard(request):
             else:
                 evreglist.append(ev)
             print(ev.event_name)
+        if pro.cost%100 == 0:
+            return render(request, 'acumenapp/dashboard.html', {'pro': pro, 'paidlist': paidlist, 'evreglist': evreglist,'combo':'combo'})
+        else:
+            return render(request, 'acumenapp/dashboard.html', {'pro': pro, 'paidlist': paidlist, 'evreglist': evreglist,'combo':'Normal'})
 
-        return render(request, 'acumenapp/dashboard.html', {'pro': pro, 'paidlist': paidlist, 'evreglist': evreglist})
     else:
         return redirect(reverse('registration'))
 
@@ -84,28 +89,28 @@ def register(request):
         #    return render(request, "acumenapp/registration.html", {"registered": False})
         #else:
         obj= User.objects.all()
-        if emailid in obj.username:
-            return render(request, "acumenapp/registration.html", {"registered": False})
-        else:
-            user = User.objects.create_user(username=emailid, email=emailid, password=password,first_name=username)
-            print(user)
-            user.is_staff = True
-            user.save()
-            qrcode =  emailid[:-10]
-            sample = pyq.create(qrcode)
-            sample.png('acusite/static/acusite/img/' + emailid[:-10] + '.png', scale=10)
-            mail_subject = 'Activate your AcumenIT account.'
-            message = 'Your Qr is:'
-            email = EmailMessage(
-                mail_subject, message, to=[emailid]
-            )
-            email.attach_file('acusite/static/acusite/img/' + emailid[:-10] + ".png")
-            email.send()
-            profile = Profile(user=user, phone_number=mobile_number, qr_code= emailid[:-10])
-            profile.save()
-            login(request, user)
-            return redirect(reverse("dashboard"))
-        pass
+        # if emailid in obj.email:
+        #     return render(request, "acumenapp/registration.html", {"registered": False})
+        # else:
+        user = User.objects.create_user(username=emailid, email=emailid, password=password,first_name=username)
+        print(user)
+        user.is_staff = True
+        user.save()
+        qrcode =  emailid[:-10]
+        sample = pyq.create(qrcode)
+        sample.png('acusite/static/acusite/img/' + emailid[:-10] + '.png', scale=10)
+        mail_subject = 'Activate your AcumenIT account.'
+        message = 'Show this at the venue. Your Qr is:'
+        email = EmailMessage(
+            mail_subject, message, to=[emailid]
+        )
+        email.attach_file('acusite/static/acusite/img/' + emailid[:-10] + ".png")
+        email.send()
+        profile = Profile(user=user, phone_number=mobile_number, qr_code= emailid[:-10])
+        profile.save()
+        login(request, user)
+        return redirect(reverse("dashboard"))
+    pass
 
 
 #login Page
@@ -263,7 +268,7 @@ def payment_request(request):
     eventid =request.GET['event']
     price = request.GET['price']
     variable=''
-    if eventid=='all':
+    if eventid =='all':
         variable='payment for acumen it registered events'
     else:
         eventdetail = Event.objects.get(event_id= eventid )

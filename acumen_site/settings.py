@@ -28,9 +28,9 @@ TEST_VERSION = False
 
 ALLOWED_HOSTS = ['*']
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'acumen.it.vce@gmail.com'
-EMAIL_HOST_PASSWORD = 'acumenIT@2K19'
+EMAIL_HOST = 'smtp.mailgun.org'
+EMAIL_HOST_USER = 'postmaster@acumenit.in'
+EMAIL_HOST_PASSWORD = '28ed594f8a7d8a1aa9c614143d687712-de7062c6-f6d2fb9b'
 EMAIL_PORT = 587
 
 # Application definition
@@ -85,19 +85,20 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-}if TEST_VERSION else {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'acumenit$acumendb',
-        'USER': 'acumenit',
-        'PASSWORD': 'qwertyuiop',
-        'HOST': 'acumenit.mysql.pythonanywhere-services.com',
-        'PORT': '3306',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-        }
-    }
 }
+#     if TEST_VERSION else {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'acumenit$acumendb',
+#         'USER': 'acumenit',
+#         'PASSWORD': 'qwertyuiop',
+#         'HOST': 'acumenit.mysql.pythonanywhere-services.com',
+#         'PORT': '3306',
+#         'OPTIONS': {
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+#         }
+#     }
+# }
 
 
 # Password validation

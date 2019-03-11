@@ -52,14 +52,14 @@
         <p class="text"> Registered Events:<br></p>
             <p class="text">
             {% for evreg in evreglist %}
-            {{evreg.event_name}} <a href="{% url 'eventdel' %}?event={{evreg.event_id}}" class="btn btn-dark del" >Delete</a>
+            -->{{evreg.event_name}} <a href="{% url 'eventdel' %}?event={{evreg.event_id}}" class="btn btn-dark del" >Delete</a>
        <!--     <a href="{% url 'eventdel' %}?event={{evreg.event_id}}" class="btn btn-dark del" >Delete</a>-->
-
+            <p class="text">COST:Rs.{{evreg.event_cost}}/-
             <a href="{% url 'payment_request' %}?event={{evreg.event_id}}&price={{evreg.event_cost}}" class="btn btn-dark del" >pay</a>
             <br>
     {% endfor %}
         </p>
-        <p class="text">COST:Rs.{{pro.cost}}/-
+        <p class="text">TOTAL COST:Rs.{{pro.cost}}/-({{combo}})
         <a href="{% url 'payment_request' %}?event=all&price={{pro.cost}}" class="btn btn-dark del" >pay all</a>
         </p>
     </div>
@@ -152,7 +152,7 @@
 
 
 
-      <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+      <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
