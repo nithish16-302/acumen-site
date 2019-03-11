@@ -85,8 +85,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-}
-'''if TEST_VERSION else {
+}if TEST_VERSION else {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
         'NAME': 'acumenit$acumendb',
@@ -97,8 +96,8 @@ DATABASES = {
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
         }
-    }'''
-#}
+    }
+}
 
 
 # Password validation
