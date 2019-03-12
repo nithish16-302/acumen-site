@@ -23,14 +23,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '#6fs_9cqc3$qlv+x(yd!^gtipmrcvk@sqc3kf68$u9q=*(y7w#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 TEST_VERSION = False
 
 ALLOWED_HOSTS = ['*']
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.mailgun.org'
-EMAIL_HOST_USER = 'postmaster@acumenit.in'
-EMAIL_HOST_PASSWORD = '28ed594f8a7d8a1aa9c614143d687712-de7062c6-f6d2fb9b'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'acumen.it.vce@gmail.com'
+EMAIL_HOST_PASSWORD = 'acumenIT@2K19'
 EMAIL_PORT = 587
 
 # Application definition

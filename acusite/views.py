@@ -60,8 +60,12 @@ def dashboard(request):
         evregdet = []
         evreglist = []
         paidlist=[]
-        if (len(evregdet)+1)%3 == 0:
+        if(len(evregdet)+1) == 12:
+            pro.cost=200
+        elif (len(evregdet)+1)%3 == 0:
             pro.cost = (len(evregdet)%3)*100
+        else:
+            pass
         for eventdet in ee:
             evregdet.append(eventdet)
             ev = Event.objects.get(event_id=eventdet.event_id)
