@@ -89,30 +89,26 @@ def register(request):
         emailid = request.POST.get("email")
         password = request.POST.get('password')
         mobile_number = request.POST.get('mobile')
-        #if username == '' or emailid== '' or password == '' or mobile_number == '':
-        #    return render(request, "acumenapp/registration.html", {"registered": False})
-        #else:
-        obj= User.objects.all()
-        # if emailid in obj.email:
-        #     return render(request, "acumenapp/registration.html", {"registered": False})
-        # else:
-        user = User.objects.create_user(username=emailid, email=emailid, password=password,first_name=username)
+        user = None
+        try:
+            user = User.objects.get(email=emailid)
+        except:
+            user = User.objects.create_user(username=emailid, email=emailid, password=password,first_name=username)
         print(user)
-        user.is_staff = True
         user.save()
         qrcode =  emailid[:-10]
         sample = pyq.create(qrcode)
-        sample.png('acusite/static/acusite/img/' + emailid[:-10] + '.png', scale=10)
+        sample.png('/staticfiles/acusite/users/' + emailid[:-10] + '.png', scale=10)
+        profile = Profile(user=user, phone_number=mobile_number, qr_code= emailid[:-10])
+        profile.save()
+        login(request, user)
         mail_subject = 'Activate your AcumenIT account.'
         message = 'Show this at the venue. Your Qr is:'
         email = EmailMessage(
             mail_subject, message, to=[emailid]
         )
-        email.attach_file('acusite/static/acusite/img/' + emailid[:-10] + ".png")
+        email.attach_file('/staticfiles/acusite/users/' + emailid[:-10] + ".png")
         email.send()
-        profile = Profile(user=user, phone_number=mobile_number, qr_code= emailid[:-10])
-        profile.save()
-        login(request, user)
         return redirect(reverse("dashboard"))
     pass
 
