@@ -98,7 +98,7 @@ def register(request):
         user.save()
         qrcode =  emailid[:-10]
         sample = pyq.create(qrcode)
-        sample.png('/staticfiles/acusite/users/' + emailid[:-10] + '.png', scale=10)
+        sample.png('/home/acumenit/acumen-site/staticfiles/acusite/users/' + emailid[:-10] + '.png', scale=10)
         profile = Profile(user=user, phone_number=mobile_number, qr_code= emailid[:-10])
         profile.save()
         login(request, user)
@@ -107,7 +107,7 @@ def register(request):
         email = EmailMessage(
             mail_subject, message, to=[emailid]
         )
-        email.attach_file('/staticfiles/acusite/users/' + emailid[:-10] + ".png")
+        email.attach_file('/home/acumenit/acumen-site/staticfiles/acusite/users/' + emailid[:-10] + ".png")
         email.send()
         return redirect(reverse("dashboard"))
     pass
