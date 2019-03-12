@@ -67,7 +67,7 @@
     </div>
    <center> <div class="col col-lg-4 col-md-12 col-sm-12">
              {% get_static_prefix as STATIC_PREFIX %}
-       <p class="text">Qr:</p> <img src="{% static 'acusite/img/'%}{{pro.qr_code}}.png" height="150" width="150"/><br><br>
+       <p class="text">Qr:</p> <img src="{% static 'acusite/users/'%}{{pro.qr_code}}.png" height="150" width="150"/><br><br>
           <a href="{% url 'logout' %}" >   <button style="margin-left: 15%; margin-top: 5%" type="button" id="signout11" class="btn btn-outline-secondary btn-lg " onclick=signout()>SignOut</button></a>
 
     </div>
