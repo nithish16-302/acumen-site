@@ -60,12 +60,7 @@ def dashboard(request):
         evregdet = []
         evreglist = []
         paidlist=[]
-        if(len(evregdet)+1) == 12:
-            pro.cost=200
-        elif (len(evregdet)+1)%3 == 0:
-            pro.cost = (len(evregdet)%3)*100
-        else:
-            pass
+
         for eventdet in ee:
             evregdet.append(eventdet)
             ev = Event.objects.get(event_id=eventdet.event_id)
@@ -74,6 +69,11 @@ def dashboard(request):
             else:
                 evreglist.append(ev)
             print(ev.event_name)
+        print(len(evreglist))
+        if len(evreglist) % 3 == 0:
+            pro.cost = (len(evreglist) % 3) * 100
+        else:
+            pass
         if pro.cost%100 == 0:
             return render(request, 'acumenapp/dashboard.html', {'pro': pro, 'paidlist': paidlist, 'evreglist': evreglist,'combo':'combo'})
         else:
@@ -102,13 +102,13 @@ def register(request):
         profile = Profile(user=user, phone_number=mobile_number, qr_code= emailid[:-10])
         profile.save()
         login(request, user)
-        mail_subject = 'Activate your AcumenIT account.'
-        message = 'Show this at the venue. Your Qr is:'
-        email = EmailMessage(
-            mail_subject, message, to=[emailid]
-        )
-        email.attach_file('/home/acumenit/acumen-site/staticfiles/acusite/users/' + emailid[:-10] + ".png")
-        email.send()
+        # mail_subject = 'Activate your AcumenIT account.'
+        # message = 'Show this at the venue. Your Qr is:'
+        # email = EmailMessage(
+        #     mail_subject, message, to=[emailid]
+        # )
+        # email.attach_file('/home/acumenit/acumen-site/staticfiles/acusite/users/' + emailid[:-10] + ".png")
+        # email.send()
         return redirect(reverse("dashboard"))
     pass
 

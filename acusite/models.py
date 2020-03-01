@@ -53,6 +53,7 @@ class EventDetails(models.Model):
     PLAYED = 'P'
 
     STATUS_CHOICES = ((RUNNING, 'RUNNING'), (PLAYED, 'PLAYED'), (WAITING, 'WAITING'))
+
     ONLINE = 'ON'
     OFFLINE = 'OFF'
     NONE = 'NONE'

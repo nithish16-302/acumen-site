@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://localhost:8000/dashboard/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="./User Dashboard_files/css" rel="stylesheet">
+  <link rel="stylesheet" href="./User Dashboard_files/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="./User Dashboard_files/bootstrap.min(1).css">
+  <link rel="stylesheet" href="./User Dashboard_files/animate.css">
+<link rel="stylesheet" href="./User Dashboard_files/all.css">
+  <link rel="stylesheet" href="./User Dashboard_files/animate.min.css">
+  <link href="./User Dashboard_files/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="./User Dashboard_files/normalize.min.css">
+
+  <title>User Dashboard</title>
+    <link rel="stylesheet" href="./User Dashboard_files/style.css">
+    <link rel="stylesheet" href="./User Dashboard_files/nav.css">
+
+</head>
+
+<body>
+
+  <div class="waves"><canvas width="871" height="584" style="width: 871px; height: 584px;"></canvas></div>
+  <div class="open-overlay">
+
+        <span class="bar-top"></span>
+        <span class="bar-middle"></span>
+        <span class="bar-bottom"></span>
+      </div>
+    <div class="overlay-navigation">
+      <nav role="navigation">
+        <ul>
+          <li><a class="h3" href="http://localhost:8000/" data-content="The beginning">Home</a></li>
+          <li><a class="h3" href="http://localhost:8000/events/" data-content="I got game">Events</a></li>
+          <li><a class="h3" href="http://localhost:8000/sponsers" data-content="Only the finest">Sponsors</a></li>
+          <li><a class="h3" href="http://localhost:8000/team" data-content="Don&#39;t hesitate">The Team</a></li>
+          <li><a class="h3" href="http://localhost:8000/gallery" data-content="Memories!">Gallery</a></li>
+         
+            <li><a class="h3" href="http://localhost:8000/dashboard/" data-content="Curious?">Dashboard</a></li>
+             
+        </ul>
+      </nav>
+    </div>
+  <p class="heading">Welcome<!-- Username --> nithish!</p>
+<div class="row">
+    <div class="col col-lg-6 col-md-12 col-sm-12">
+      <table id="one" class="table table-striped">
+          <thead class="thead-light">
+                    <tr>
+                    <th class="text">Registered Events</th>
+                    <th class="text">Delete</th>
+
+                    <th class="text">Cost</th>
+                    <th class="text">Pay</th>
+
+                    </tr>
+                    </thead>
+          
+                    <tbody><tr>
+                        <td class="text">Head Start  </td>
+                        <td class="text"><a href="http://localhost:8000/eventdel?event=eid1" class="btn btn-dark del">Delete</a></td>
+                        <td class="text"> COST:Rs.40/-  </td>
+                        <td class="text"><a href="http://localhost:8000/payment_request/?event=eid1&amp;price=40" class="btn btn-dark del">pay</a></td>
+                    </tr>
+
+       <!--     <a href="/eventdel?event=eid1" class="btn btn-dark del" >Delete</a>-->
+    
+                    <tr>
+                        <td class="text">Kairotic King  </td>
+                        <td class="text"><a href="http://localhost:8000/eventdel?event=eid2" class="btn btn-dark del">Delete</a></td>
+                        <td class="text"> COST:Rs.40/-  </td>
+                        <td class="text"><a href="http://localhost:8000/payment_request/?event=eid2&amp;price=40" class="btn btn-dark del">pay</a></td>
+                    </tr>
+
+       <!--     <a href="/eventdel?event=eid2" class="btn btn-dark del" >Delete</a>-->
+    
+          <tr colspan="4"><td class="text">TOTAL COST:Rs.80/-(Normal)
+        <a href="http://localhost:8000/payment_request/?event=all&amp;price=80" class="btn btn-dark del">pay all</a></td></tr>
+      </tbody></table>
+    </div>
+ <div class="col col-lg-2 col-md-12 col-sm-12">
+             
+       <p class="text">Qr:</p> <img src="./User Dashboard_files/nithishm999.png" height="150" width="150"><br><br>
+          <a href="http://localhost:8000/logout/">   <button style="margin-left: 15%; margin-top: 5%" type="button" id="signout11" class="btn btn-outline-secondary btn-lg " onclick="signout()">SignOut</button></a>
+
+    </div>
+
+
+
+    <div class="col col-lg-4 col-md-12 col-sm-12">
+       <p></p><table id="2" class="table table-striped">
+          <thead class="thead-light">
+                    <tr>
+                    <th class="text">Paid Events</th>
+                    </tr>
+                    </thead>
+                
+
+            
+       </table>
+        </div>
+    </div>
+
+
+<div class="row">
+    <div class="col col-lg-4 col-md-6 col-sm-12 ">
+            
+                <h4 class="text">Your details</h4>
+                <form role="form" action="http://localhost:8000/change_registration_details/" method="POST" id="participantDetails">
+                    <div class="form-group">
+                    <label class="text" for="first_name">Name </label>
+                    <input class="form-control details-input" id="first_name" name="first_name" type="text" placeholder="Enter Name" value="nithish">
+                  </div>
+
+                  <div class="form-group">
+                    <label class="text" for="email">Email ID </label>
+                    <input class="form-control details-input" name="email" type="email" placeholder="Enter Email" disabled="" value="nithishm999@gmail.com">
+                  </div>
+                    <div class="form-group">
+                      <p class="text" for="roll_number">roll Number </p>
+                      <input class="form-control details-input" name="roll_number" type="tel" placeholder="Enter roll number" value="1602-16-737-302">
+                  </div>
+
+
+
+                  <div class="form-group">
+                      <label class="text" for="mobile_number">Phone Number </label>
+                      <input class="form-control details-input" name="phone_number" type="tel" placeholder="Enter Mobile Number" value="8008721348">
+                  </div>
+
+                  <div class="form-group">
+                      <label class="text" for="college">College </label>
+                      <input class="form-control details-input" name="college" type="text" placeholder="Enter College Name" value="8008721348">
+                  </div>
+                     <div class="form-group">
+                      <label class="text" for="year">year </label>
+                      <input class="form-control details-input" name="year" type="text" placeholder="Enter year " value="III">
+                  </div>
+                  <div class="form-group">
+                      <label class="text" for="branch">Branch </label>
+                       <select id="theme" class="form-control details-input" name="branch">
+                          <option value="IT">IT</option>
+                          <option value="EEE">EEE</option>
+                          <option value="ECE">ECE</option>
+                          <option value="CIVIL">CIVIL</option>
+                          <option value="CSE">CSE</option>
+                          <option value="MECH">MECH</option>
+                            <option value="CHEMICAL">CHEMICAL</option>
+                            <option value="EIE">EIE</option>
+                            <option value="TEXTILE">TEXTILE</option>
+                        </select>
+
+                  </div>
+                  <input class="btn btn-primary" form="participantDetails" type="submit" value="Save Details">
+                </form>
+                <br>
+
+
+    </div>
+  </div>
+
+
+
+
+
+      <script src="./User Dashboard_files/jquery.min.js.download"></script>
+    <script src="./User Dashboard_files/jquery.min.js(1).download"></script>
+
+    <script src="./User Dashboard_files/jquery-3.3.1.slim.min.js.download" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="./User Dashboard_files/popper.min.js.download" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="./User Dashboard_files/bootstrap.min.js.download" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+     <script src="./User Dashboard_files/velocity.min.js.download"></script>
+<script src="./User Dashboard_files/velocity.ui.min.js.download"></script>
+
+      <script src="./User Dashboard_files/index.js.download"></script>
+      <script src="./User Dashboard_files/index.js(1).download"></script>
+
+
+
+
+
+</body></html>
